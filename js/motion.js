@@ -4,6 +4,12 @@
    2. Reveals [data-reveal] blocks as they enter the screen.
    3. Runs the pinned Proof sequence (8.2) with GSAP + ScrollTrigger on
       desktop; phones get simple reveals; reduced motion gets nothing.
+   4. The Year (8.4): on desktop, pins the timeline and moves it sideways
+      as you scroll down. Without GSAP / with reduced motion it stays a
+      normal sideways-scrolling strip.
+   5. Muharram teaser (8.5): the photo settles slowly as it scrolls in.
+   6. Ten nights journey (muharram.html): the large night number follows
+      the step you are reading (no GSAP needed).
    Content is visible without this file — it only adds motion on top.
    ========================================================================= */
 (function () {
@@ -65,8 +71,12 @@
     // Desktop (768px+): pin the section and step through facts on scroll.
     mm.add("(min-width: 768px)", function () {
       section.classList.add("is-pinned");
-      var facts = gsap.utils.toArray(section.querySelectorAll(".proof__fact"));
-      var media = gsap.utils.toArray(section.querySelectorAll(".proof__media > *"));
+      // Facts whose number isn't confirmed yet are [hidden] — skip them and their media.
+      var facts = gsap.utils.toArray(section.querySelectorAll(".proof__fact:not([hidden])"));
+      var media = gsap.utils.toArray(section.querySelectorAll(".proof__media > :not([hidden])"));
+      // One progress tick per visible fact.
+      var rail = section.querySelector(".proof__rail");
+      if (rail) rail.innerHTML = facts.map(function () { return '<span class="proof__tick"><span></span></span>'; }).join("");
       var ticks = gsap.utils.toArray(section.querySelectorAll(".proof__tick span"));
       var steps = facts.length;
 
@@ -111,8 +121,66 @@
     });
   }
 
+  /* ---- 4. The Year: vertical scroll drives the horizontal timeline ----- */
+  function initYear() {
+    var section = document.querySelector("[data-year]");
+    if (!section || !motionOk || !window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add("(min-width: 1024px)", function () {
+      var track = section.querySelector("[data-year-track]");
+      var viewport = section.querySelector("[data-year-viewport]");
+      var inner = section.querySelector(".year__inner");
+      section.classList.add("is-driven");
+      viewport.scrollLeft = 0;
+      var distance = function () { return Math.max(0, track.scrollWidth - viewport.clientWidth); };
+      gsap.to(track, {
+        x: function () { return -distance(); },
+        ease: "none",
+        scrollTrigger: {
+          trigger: inner,
+          start: "top top",
+          end: function () { return "+=" + distance(); },
+          pin: true,
+          scrub: 0.5,
+          invalidateOnRefresh: true,
+          anticipatePin: 1
+        }
+      });
+      return function () { section.classList.remove("is-driven"); gsap.set(track, { clearProps: "transform" }); };
+    });
+  }
+
+  /* ---- 5. Muharram teaser: slow settle of the photo ------------------- */
+  function initTeaser() {
+    var photo = document.querySelector("[data-settle] img");
+    if (!photo || !motionOk || !window.gsap || !window.ScrollTrigger) return;
+    gsap.fromTo(photo, { scale: 1.08 }, {
+      scale: 1, ease: "none",
+      scrollTrigger: { trigger: photo.closest("[data-settle]"), start: "top bottom", end: "center center", scrub: true }
+    });
+  }
+
+  /* ---- 6. Ten nights journey: sticky numeral follows the active step --- */
+  function initJourney() {
+    var num = document.querySelector("[data-journey-num]");
+    var steps = document.querySelectorAll("[data-night]");
+    if (!num || !steps.length || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var n = entry.target.getAttribute("data-night");
+        if (num.textContent === n) return;
+        if (motionOk) {
+          num.style.opacity = "0";
+          setTimeout(function () { num.textContent = n; num.style.opacity = "1"; }, 250);
+        } else num.textContent = n;
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    steps.forEach(function (s) { io.observe(s); });
+  }
+
   /* ---- Start ------------------------------------------------------------ */
-  function start() { initReveals(); initProof(); }
+  function start() { initReveals(); initProof(); initYear(); initTeaser(); initJourney(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();

@@ -374,3 +374,10 @@ English/Urdu toggle with right-to-left layout).
   `--ink-muted` and `--mourning-muted`. See `styleguide.html` for live ratios.
 - **Deployment** (section 13, last item) still needs Mueez's explicit go-ahead
   before anything is published.
+- **Build status (2026-10-11):** Mueez asked for the whole site in one pass, so phases
+  1–9 were built together. The site runs in preview mode (`showSamples: true`). The
+  launch checklist is in `TODO.md`.
+- **Shared markup:** the header, menu, drawer and footer are repeated in `index.html`,
+  `muharram.html` and `library.html` (there is no build step). Change all three together.
+- **Do not use the `data-year` attribute** for anything except The Year section: motion.js
+  looks it up. The footer copyright year uses `data-current-year`.

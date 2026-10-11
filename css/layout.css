@@ -43,3 +43,263 @@
 
 /* ---- Full-bleed media: breaks out of the container ---------------------- */
 .bleed { width: 100%; }
+
+/* =========================================================================
+   SITE CHROME
+   ========================================================================= */
+
+/* ---- Preview banner: only while settings.showSamples is true ------------ */
+.preview-banner {
+  max-width: none;
+  background: var(--gold); color: var(--teal-deep);
+  font-size: 0.8125rem; font-weight: 600; text-align: center;
+  padding: 0.4rem var(--gutter); line-height: 1.4;
+}
+
+/* ---- Header: logo left, links centre, one button right ----------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(246, 243, 236, 0.94);
+  -webkit-backdrop-filter: saturate(1.2) blur(8px); backdrop-filter: saturate(1.2) blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header__in { display: flex; align-items: center; gap: var(--space-4); min-height: 4.5rem; }
+.brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; color: var(--teal); margin-right: auto; }
+.brand__logo { height: 48px; width: auto; }
+.brand__mark { font-family: var(--font-display); font-size: 1.75rem; font-weight: 500; line-height: 1; letter-spacing: 0.04em; }
+.brand__name { display: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); line-height: 1.35; border-left: 1px solid var(--gold); padding-left: var(--space-3); }
+@media (min-width: 560px) { .brand__name { display: block; } }
+.site-nav { display: none; }
+.site-nav ul { display: flex; gap: clamp(0.75rem, 1.6vw, 1.75rem); list-style: none; padding: 0; }
+.site-nav a { color: var(--ink); text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding-block: 0.5rem; border-bottom: 1px solid transparent; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { border-bottom-color: var(--gold); color: var(--teal); }
+.menu-btn { text-decoration: none; display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; padding: 0 0.75rem; background: none; border: 1px solid var(--line-strong); border-radius: var(--radius); font-weight: 600; font-size: 0.9375rem; color: var(--teal); }
+.menu-btn svg { width: 1.1rem; height: 1.1rem; }
+.header-cta { padding-inline: 1rem; }
+@media (max-width: 379px) { .header-cta { display: none; } }
+@media (min-width: 1100px) {
+  .site-nav { display: block; }
+  .menu-btn { display: none; }
+  .brand { margin-right: 0; }
+  .site-nav { margin-inline: auto; }
+}
+
+/* Dark header on Muharram pages / in Muharram season. */
+.site-header.muharram { background: rgba(11, 14, 15, 0.94); border-bottom-color: var(--mourning-line); }
+.site-header.muharram .brand { color: var(--mourning-text); }
+.site-header.muharram .brand__name { color: var(--mourning-muted); border-left-color: var(--crimson); }
+.site-header.muharram .site-nav a { color: var(--mourning-text); }
+.site-header.muharram .site-nav a:hover, .site-header.muharram .site-nav a[aria-current="page"] { border-bottom-color: var(--crimson); color: var(--mourning-text); }
+.site-header.muharram .menu-btn { color: var(--mourning-text); border-color: var(--line-strong); }
+
+/* ---- Full-screen mobile menu (a <dialog>) ------------------------------- */
+.menu {
+  width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0;
+  background: var(--teal-deep); color: var(--paper);
+}
+.menu::backdrop { background: rgba(12, 42, 48, 0.6); }
+.menu__in { min-height: 100%; display: flex; flex-direction: column; padding: var(--space-4) var(--gutter) var(--space-7); }
+.menu__top { display: flex; justify-content: space-between; align-items: center; min-height: 3.5rem; }
+.menu__close { background: none; border: 1px solid rgba(246,243,236,.4); color: var(--paper); min-height: 44px; padding: 0 0.9rem; border-radius: var(--radius); font-weight: 600; display: inline-flex; gap: .5rem; align-items: center; }
+.menu__list { list-style: none; padding: 0; margin-top: var(--space-6); display: grid; }
+.menu__list a { display: flex; align-items: baseline; gap: var(--space-4); padding-block: 0.7rem; border-bottom: 1px solid rgba(194, 154, 94, 0.25); color: var(--paper); text-decoration: none; font-family: var(--font-display); font-size: clamp(1.75rem, 1.3rem + 2.5vw, 2.5rem); line-height: 1.2; }
+.menu__list a span { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: .12em; color: var(--gold); font-variant-numeric: tabular-nums; }
+.menu__foot { margin-top: auto; padding-top: var(--space-6); display: grid; gap: var(--space-4); }
+.menu__date { font-size: 0.875rem; color: rgba(246, 243, 236, 0.75); }
+
+/* ---- Footer (8.11) ------------------------------------------------------ */
+.site-footer { padding-block: var(--space-8) var(--space-6); }
+.site-footer__grid { display: grid; gap: var(--space-6); }
+@media (min-width: 800px) { .site-footer__grid { grid-template-columns: 1.6fr 1fr 1fr; } }
+.site-footer__name { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; color: var(--paper); }
+.site-footer p, .site-footer li { color: rgba(246, 243, 236, 0.8); }
+.site-footer ul { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+.site-footer h2 { font-family: var(--font-body); font-size: var(--step--1); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-3); }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; text-decoration-color: var(--gold); }
+.site-footer__base { margin-top: var(--space-7); padding-top: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-size: 0.875rem; color: rgba(246, 243, 236, 0.72); }
+
+/* =========================================================================
+   HOMEPAGE SECTIONS
+   ========================================================================= */
+
+/* ---- 8.1 Now: the living noticeboard ------------------------------------
+   Phones: text → today strip → photo (the noticeboard comes first).
+   Desktop: text beside the photo, the strip full width underneath.       */
+.now { padding-block: clamp(2rem, 1rem + 4vw, 4.5rem) clamp(2.5rem, 1.5rem + 3vw, 4rem); }
+.now > .container { display: grid; gap: var(--space-6); grid-template-areas: "text" "strip" "photo"; }
+.now__grid { display: contents; }
+.now__text { grid-area: text; }
+.now__photo { grid-area: photo; }
+.now .now-strip { grid-area: strip; }
+@media (min-width: 960px) {
+  .now > .container { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: "text photo" "strip strip"; column-gap: var(--space-8); align-items: end; }
+}
+.nowrap { white-space: nowrap; }
+.now__text { display: grid; gap: var(--space-5); }
+.now__text h1 { font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); }
+.now__lead { font-size: var(--step-1); color: var(--ink-muted); max-width: 36ch; }
+.now__season { font-family: var(--font-display); font-size: var(--step-4); line-height: 1.02; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-5); color: var(--mourning-text); max-width: none; }
+.now__season [lang="ar"] { font-size: 0.55em; color: var(--mourning-muted); }
+.muharram .now__text h1 { font-size: var(--step-2); max-width: none; color: var(--mourning-muted); }
+.muharram .now__lead { color: var(--mourning-muted); }
+.now__photo { aspect-ratio: 4 / 3; }
+@media (min-width: 960px) { .now__photo { aspect-ratio: 4 / 5; max-height: 34rem; width: 100%; } }
+.muharram .now-strip { border-top-color: var(--crimson); }
+.muharram .now-strip__k { color: var(--mourning-muted); }
+.muharram .now-strip__v { color: var(--mourning-text); }
+.muharram .now-strip__sub, .muharram .prayers li { color: var(--mourning-muted); }
+.muharram .prayers b { color: var(--mourning-text); }
+.muharram .prayers li[aria-current="time"], .muharram .prayers li[aria-current="time"]::after { color: var(--mourning-text); border-top-color: var(--crimson); }
+.now__live { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+
+/* ---- 8.2 Proof ----------------------------------------------------------- */
+.proof-section { padding-block: var(--section-y) 0; }
+.proof-section .proof { padding-bottom: var(--section-y); }
+.proof-section .proof.is-pinned { padding-bottom: 0; }
+
+/* ---- 8.3 Learn: class finder -------------------------------------------- */
+.finder__filters { display: grid; gap: var(--space-4); padding-block: var(--space-5); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--line); margin-bottom: var(--space-5); }
+.finder__group { display: grid; gap: var(--space-2); }
+@media (min-width: 900px) { .finder__group { grid-template-columns: 7.5rem 1fr; align-items: center; } }
+.finder__group-name { font-size: var(--step--1); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+.finder__bar { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; justify-content: space-between; margin-bottom: var(--space-5); }
+.finder__count { font-size: 0.9375rem; color: var(--ink-muted); }
+.class-card__desc { font-size: 0.9375rem; color: var(--ink-muted); }
+.empty { display: grid; gap: var(--space-4); justify-items: start; padding: var(--space-6); border: 1px solid var(--line); border-top: 2px solid var(--gold); border-radius: var(--radius); background: var(--paper); }
+.empty h3 { font-size: var(--step-2); }
+.empty p { color: var(--ink-muted); }
+
+/* ---- 8.4 The Year: horizontal timeline --------------------------------- */
+.year { overflow: hidden; }
+.year__viewport { position: relative; }
+.year__track { list-style: none; padding: 0; display: grid; gap: 0; }
+.year__month { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--space-4); padding-block: var(--space-4); border-top: 1px solid var(--line); }
+.year__month-name { font-size: 0.875rem; font-weight: 600; color: var(--ink-muted); display: grid; align-content: start; gap: 2px; }
+.year__month-name [lang="ar"] { font-size: 1.05rem; font-weight: 400; color: var(--gold-text); line-height: 1.3; }
+.year__month.is-now { border-top: 2px solid var(--teal); }
+.year__month.is-empty .year__month-body { min-height: 0; }
+.year__month-body { display: grid; gap: var(--space-4); }
+.year__here {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--teal);
+}
+.year__here::before { content: ""; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px var(--teal-soft); }
+.program { gap: var(--space-3); padding: var(--space-4) var(--space-5) var(--space-5); }
+.program__dates { font-size: 0.9375rem; color: var(--ink); font-weight: 500; }
+.program__note { font-size: var(--step--1); color: var(--ink-muted); }
+.program__photo { aspect-ratio: 3 / 2; margin: calc(var(--space-4) * -1) calc(var(--space-5) * -1) 0; border-radius: 0; }
+.program .card__title { font-size: 1.625rem; }
+
+/* Desktop: a horizontal line of months. By default it scrolls sideways
+   natively (works with no JS and with reduced motion). With motion allowed,
+   GSAP adds .is-driven: the section pins and vertical scroll moves the line. */
+@media (min-width: 1024px) {
+  .year__viewport { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--gold) transparent; padding-bottom: var(--space-4); }
+  .year__track { display: flex; width: max-content; gap: 0; padding-inline: var(--gutter); }
+  .year__month { display: flex; flex-direction: column; gap: var(--space-4); width: 21rem; padding: var(--space-5) var(--space-5) var(--space-2) var(--space-4); border-top: 1px solid var(--gold); border-left: 1px solid var(--line); }
+  .year__month.is-empty { width: 8.5rem; }
+  .year__month.is-empty.is-now { width: 13rem; }
+  .year__month.is-now { border-top: 3px solid var(--teal); }
+  .year__month-name { min-height: 3.2rem; }
+  .year.is-driven .year__viewport { overflow: visible; }
+  .year.is-driven .year__inner { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-block: var(--space-6); }
+  .year.is-driven .year__hint { display: none; }
+}
+.year__hint { font-size: 0.875rem; color: var(--ink-muted); margin-top: var(--space-3); }
+@media (max-width: 1023px) { .year__hint { display: none; } }
+
+/* ---- 8.5 Muharram teaser ------------------------------------------------ */
+.m-teaser__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 1024px) { .m-teaser__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; } }
+.m-teaser__title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-5); }
+.m-teaser__title [lang="ar"] { font-size: var(--step-3); color: var(--mourning-muted); line-height: 1.2; }
+.m-teaser__photo { aspect-ratio: 16 / 10; }
+.m-facts { list-style: none; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--crimson); }
+.m-facts li { display: grid; grid-template-columns: 8rem 1fr; gap: var(--space-4); padding-block: var(--space-3); border-bottom: 1px solid var(--mourning-line); font-size: 0.9375rem; }
+.m-facts dt, .m-facts .k { color: var(--mourning-muted); }
+
+/* ---- 8.6 Library -------------------------------------------------------- */
+.lecture { gap: var(--space-3); padding: var(--space-4); }
+.lecture .card__title { font-size: 1.375rem; line-height: 1.25; }
+.lecture__meta { font-size: 0.875rem; color: var(--ink-muted); }
+.library__tools { display: grid; gap: var(--space-4); padding-block: var(--space-5); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--line); margin-bottom: var(--space-5); }
+@media (min-width: 900px) { .library__tools { grid-template-columns: 2fr 1fr 1fr 1fr; align-items: end; } }
+
+/* ---- 8.7 Camp ----------------------------------------------------------- */
+.camp__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 1024px) { .camp__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; } }
+.facts { list-style: none; padding: 0; display: grid; border-top: 1px solid var(--gold); }
+.facts li { display: grid; grid-template-columns: 8.5rem 1fr; gap: var(--space-4); padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+.facts .k { font-size: var(--step--1); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-muted); padding-top: .2rem; }
+.form-panel { padding: var(--space-6) var(--space-5); background: var(--paper); border: 1px solid var(--line); border-top: 2px solid var(--gold); border-radius: var(--radius); }
+.section--alt .form-panel { background: var(--paper); }
+@media (min-width: 640px) { .form-panel { padding: var(--space-7) var(--space-6); } }
+.form-panel h3 { margin-bottom: var(--space-2); }
+.form-panel > p { color: var(--ink-muted); margin-bottom: var(--space-5); }
+
+/* ---- 8.8 Support -------------------------------------------------------- */
+.support__blocks { display: grid; gap: var(--space-5); margin-bottom: var(--space-7); }
+@media (min-width: 800px) { .support__blocks { grid-template-columns: 1fr 1fr; } }
+
+/* ---- 8.9 Visit ---------------------------------------------------------- */
+.visit__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 1024px) { .visit__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.map-frame { aspect-ratio: 4 / 3; width: 100%; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); }
+.hours { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.hours th, .hours td { text-align: left; padding: .55rem 0; border-bottom: 1px solid var(--line); font-weight: 400; }
+.hours th { color: var(--ink-muted); }
+
+/* =========================================================================
+   MUHARRAM PAGE
+   ========================================================================= */
+.m-page { background: var(--mourning); }
+.m-hero { padding-block: clamp(3rem, 2rem + 5vw, 7rem) var(--space-8); }
+.m-hero__grid { display: grid; gap: var(--space-7); }
+@media (min-width: 1024px) { .m-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; } }
+.m-hero h1 { font-size: var(--step-4); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-5); }
+.m-hero h1 [lang="ar"] { font-size: 0.6em; color: var(--mourning-muted); }
+.m-lead { font-size: var(--step-1); color: var(--mourning-muted); max-width: 40ch; }
+.live-panel { display: grid; gap: var(--space-4); padding: var(--space-6) var(--space-5); border: 1px solid var(--mourning-line); border-top: 2px solid var(--crimson); border-radius: var(--radius); }
+.live-panel h2 { font-size: var(--step-2); }
+.live-panel p { color: var(--mourning-muted); }
+
+/* Ten nights journey: sticky numeral column + one step per night. */
+.journey { display: grid; gap: var(--space-6); }
+.journey__aside { display: none; }
+@media (min-width: 960px) {
+  .journey { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--space-8); }
+  .journey__aside { display: block; position: sticky; top: 6rem; align-self: start; height: calc(100vh - 8rem); }
+}
+.journey__frame { position: relative; height: 100%; display: grid; align-content: end; overflow: hidden; border-radius: var(--radius); background: #121617; }
+.journey__frame .photo { position: absolute; inset: 0; background: transparent; }
+.journey__frame .photo img { opacity: 0.55; }
+.journey__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,14,15,.92), rgba(11,14,15,.1) 60%); }
+.journey__num { position: relative; z-index: 1; padding: var(--space-6); display: grid; gap: var(--space-2); }
+.journey__num b { font-family: var(--font-display); font-weight: 400; font-size: clamp(6rem, 4rem + 8vw, 11rem); line-height: .85; color: var(--mourning-text); font-variant-numeric: lining-nums; transition: opacity var(--dur-slow) var(--ease-out); }
+.journey__num span { font-size: var(--step--1); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--mourning-muted); }
+.journey__steps { list-style: none; padding: 0; display: grid; }
+.step { display: grid; gap: var(--space-4); padding-block: var(--space-7); border-top: 1px solid var(--mourning-line); }
+@media (min-width: 960px) { .step { min-height: 50vh; align-content: center; } }
+.step:first-child { border-top: 1px solid var(--crimson); }
+.step__n { font-family: var(--font-display); font-size: var(--step-3); color: var(--mourning-text); line-height: 1; font-variant-numeric: lining-nums; }
+.step__date { font-size: 0.9375rem; color: var(--mourning-muted); }
+.step__topic { font-size: var(--step-1); color: var(--mourning-text); }
+.step__topic.is-missing { color: var(--mourning-muted); font-style: italic; font-size: 1rem; }
+.step .lite-embed { margin-top: var(--space-2); }
+.step .photo { aspect-ratio: 16 / 9; }
+
+/* Schedule table for the coming Muharram. */
+.schedule { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.schedule th, .schedule td { text-align: left; padding: .75rem .5rem; border-bottom: 1px solid var(--mourning-line); vertical-align: top; }
+.schedule thead th { font-size: var(--step--1); letter-spacing: .1em; text-transform: uppercase; color: var(--mourning-muted); font-weight: 600; border-bottom: 1px solid var(--crimson); }
+.schedule tbody th { font-family: var(--font-display); font-size: 1.375rem; font-weight: 400; color: var(--mourning-text); white-space: nowrap; font-variant-numeric: lining-nums; }
+.schedule .muted { color: var(--mourning-muted); }
+
+/* Muharram page footer: stays in mourning tones. */
+.m-page .site-footer { background: #070909; border-top: 1px solid var(--crimson); --line: var(--mourning-line); }
+.m-page .site-footer h2 { color: var(--mourning-muted); }
+.program__dates .icon { display: inline; vertical-align: -0.22em; width: 1.05em; height: 1.05em; color: var(--gold-text); margin-right: .2em; }
+
+/* Form rows: fields line up at the top even when one has a hint. */
+.form-panel .grid, .drawer .grid { align-items: start; }

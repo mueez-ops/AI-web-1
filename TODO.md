@@ -1,7 +1,30 @@
 # TODO — facts and files needed from Mueez
 
 Nothing below is shown on the site until it is filled in. Tick each item when it is provided.
-Placeholders in the code are marked `<!-- TODO: ... -->`.
+Placeholders in the code are marked `<!-- TODO: ... -->`. Almost everything goes into a file in
+`data/`, and each data file starts with a comment explaining how to edit it.
+
+## Where each answer goes
+
+| Answer | File |
+|---|---|
+| Purpose line, logo path, contact, address, map, hours, social links, Formspree URLs, Hijri offset, prayer method, student and follower numbers | `data/settings.js` |
+| Class list | `data/classes.js` |
+| Confirmed program dates, livestream windows, one-line summaries | `data/programs.js` |
+| Muharram topics, times, live windows, recordings | `data/muharram.js` |
+| Lecture archive (YouTube IDs) | `data/lectures.js` |
+| Camp details (dates, what happens, what to bring), School and Welfare text | `index.html` (search for `TODO`) |
+| Approved photos | `images/` (WebP), then update the `src` in the HTML |
+
+## Before going live (launch checklist)
+
+- [ ] Set `showSamples: false` in `data/settings.js`. Remove `data/samples.js` and its `<script>` tags.
+- [ ] Create the four Formspree forms (enroll, camp, support, enquiry) and paste their URLs into `settings.js`.
+- [ ] Replace the `images/local/...` photo paths with approved photos in `images/`. The repo is public, so publish only consented photos.
+- [ ] Set `siteUrl`. Make `og:image` and `og:url` absolute in the three pages. Add `url`, `logo` and `sameAs` to the JSON-LD in `index.html`.
+- [ ] Add `Event` structured data once program dates are confirmed. It is deliberately left out while dates are only "expected".
+- [ ] Replace `images/favicon.svg` (placeholder arch) with one made from the logo.
+- [ ] Explicit go-ahead to publish, and choose the host (Netlify or Firebase Hosting) and domain.
 
 ## Open questions from the brief (CLAUDE.md §14)
 
@@ -39,4 +62,8 @@ Placeholders in the code are marked `<!-- TODO: ... -->`.
 - [ ] **Hijri offset.** The site computes the Umm al-Qura calendar. Pakistan's moon sighting is often a day behind it. Which offset should `hijriOffsetDays` use (0, -1, or set per month)?
 - [ ] **Arabic spellings** of the program names. The styleguide shows standard spellings; please confirm them.
 - [ ] **"School"** in "Support — School and Welfare & Educational Support" (§8.8). Is there a school separate from the classes? What should this block say?
+- [ ] **Eid prayers:** does AIAT hold prayers for both Eid al-Fitr and Eid al-Adha? Both are listed in `data/programs.js`. Remove Eid al-Adha if not.
+- [ ] **Shab-e-Qadr nights:** which nights does AIAT hold? The site currently assumes 19–23 Ramadan, shown as expected.
+- [ ] **One-line summaries** for the Ramadan, Shab-e-Qadr and Eid al-Ghadir programs.
+- [ ] **Privacy wording** under each form. It currently says details are used only to reply and are not shared; please confirm that is true.
 - [ ] **Hosting go-ahead.** Netlify or Firebase Hosting, and the domain. Nothing will be published without your explicit approval.

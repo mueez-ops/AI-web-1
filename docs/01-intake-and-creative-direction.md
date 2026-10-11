@@ -97,3 +97,39 @@ Light YouTube embeds (the thumbnail first, the player only when tapped) are a pe
 ## 8. Readiness and next action
 
 The styleguide is ready for **creative review (Gate 2)**. Real-page building (Phase 1) waits for that approval. The most valuable `TODO.md` answers to unblock Phase 1 and 2 are the **logo, the contact details, the purpose line, and the Hijri offset.**
+
+---
+
+## 9. Build report (all phases, 2026-10-11)
+
+Mueez asked for the whole site at once, so the per-phase review stops were combined into this single build.
+
+### What was built
+
+| Brief § | Where | Status |
+|---|---|---|
+| 8.1 Now | `index.html` `#now`, `js/now.js` | ✅ Live Hijri and Gregorian date, Quetta prayer times (Aladhan, cached daily, hidden on failure), next-program countdown, Live badge from data windows, automatic Muharram mode |
+| 8.2 Proof | `#proof` (pinned), `js/motion.js` | ✅ Confirmed facts only. Students and followers appear automatically once set in `settings.js`. Typographic panels stand in for missing photos. |
+| 8.3 Learn | `#learn`, `js/classes.js` | ✅ Filter chips built from the data and kept in the URL, PKT ⇄ visitor-time switch, honest empty states |
+| 8.4 The Year | `#year`, `js/calendar.js` | ✅ Twelve Hijri months with a "we are here" marker. Expected dates are computed from Umm al-Qura plus the offset. Google Calendar link and `.ics` download. Pinned horizontal scroll with GSAP; a native sideways scroller otherwise. |
+| 8.5 Muharram | `#muharram`, `muharram.html` | ✅ Teaser, schedule table (expected dates), livestream panel, ten-nights journey with a sticky night number |
+| 8.6 Library | `#library`, `library.html`, `js/archive.js` | ✅ Latest three on the homepage. Search and filters kept in the URL. Light YouTube embeds (`youtube-nocookie`, loaded on tap). |
+| 8.7 Camp | `#camp` | ✅ Facts from the brief, TODO placeholders, registration form (age validated 10–17) |
+| 8.8 Support | `#support` | ✅ Two blocks (TODO text), confidential request form, "Support a student" opens a pre-filled enquiry |
+| 8.9 Visit | `#visit` | ✅ Address, map (embedded only when a URL is set), hours, WhatsApp button (shown only when a number is set), enquiry form |
+| 8.10 Drawer | `<dialog id="join">`, `js/main.js`, `js/forms.js` | ✅ Pre-selected class, validation, loading, success and error states, WhatsApp fallback, Back button closes it, `#join` deep link |
+| 8.11 Footer | all pages | ✅ |
+| §9 SEO / sharing | `<head>` | ✅ OG and Twitter tags, a typographic preview image (`images/og-aiat.png`), `EducationalOrganization` JSON-LD. `Event` JSON-LD is deliberately withheld until dates are confirmed. |
+
+### Honesty mechanisms
+- **Preview mode:** `settings.showSamples` adds clearly tagged SAMPLE classes and lectures, plus a banner on every page.
+- **Settings-dependent content:**
+  - `data-requires` hides anything that needs a missing setting.
+  - `data-unless` shows a visible "to be added" note in its place.
+- **Expected dates:** dates that depend on moon sighting are always labelled *expected*, including in calendar exports.
+- **Unconnected forms:** a form with no Formspree URL says so. In preview it runs a demo and states that nothing was sent; outside preview, submit is disabled with an explanation.
+
+### Verification (Playwright, Chromium)
+- **Pages and widths:** all four pages tested at 375, 768 and 1440 px, plus 1440 px with reduced motion. No console errors and no horizontal overflow.
+- **Interactions:** filters with URL sync, time-zone conversion (PKT 16:00 shows as 12:00 in London in October), drawer open/Esc/Back/deep link, form validation and preview success, camp age rule, `.ics` contents, Google Calendar URL, library search and deep link, journey numeral, mobile menu.
+- **Network limits in the test environment:** this sandbox blocks cdnjs and api.aladhan.com, so GSAP was served from a local copy and prayer times were mocked during tests. With both blocked, the site still works: content is visible and the prayer block hides itself.

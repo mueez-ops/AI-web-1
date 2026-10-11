@@ -74,7 +74,8 @@
 /* ---- Reset -------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 5.5rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 img, svg, video { display: block; max-width: 100%; height: auto; }
 input, button, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
@@ -154,3 +155,13 @@ a:hover { text-decoration-color: var(--gold); }
 .muharram h1, .muharram h2, .muharram h3 { color: var(--mourning-text); }
 .muharram a { color: var(--mourning-text); }
 .muharram :focus-visible { outline-color: var(--mourning-text); }
+
+/* ---- Season switching ----------------------------------------------------
+   <html> gets .is-muharram during the Islamic month of Muharram (set in the
+   <head>). Sections marked .season-swap also get .muharram (dark palette).
+   Content variants: .season-only-normal / .season-only-muharram.          */
+html:not(.is-muharram) .season-only-muharram { display: none !important; }
+.is-muharram .season-only-normal { display: none !important; }
+
+/* [hidden] must always win over component display rules. */
+[hidden] { display: none !important; }
