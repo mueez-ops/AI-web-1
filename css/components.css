@@ -1,0 +1,236 @@
+/* =========================================================================
+   AIAT — components.css
+   Reusable pieces: labels, rules, buttons, chips, tags, cards, the "now"
+   strip, form fields, alerts, placeholders and media frames.
+   ========================================================================= */
+
+/* ---- Numbered label: "01 — The Year" (the recurring structural device) -- */
+.label {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-family: var(--font-body); font-size: var(--step--1); font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text);
+  max-width: none;
+}
+.label__num { font-variant-numeric: tabular-nums; }
+.label__num::after {
+  content: ""; display: inline-block; width: 2.25rem; height: var(--hairline);
+  background: var(--gold); vertical-align: middle; margin-left: var(--space-3);
+}
+.on-dark .label, .muharram .label { color: var(--gold); }
+.muharram .label { color: var(--mourning-muted); }
+.muharram .label__num::after { background: var(--crimson); }
+
+/* ---- Hairline rule: gold line between blocks ----------------------------- */
+.rule { border: 0; height: var(--hairline); background: var(--gold); opacity: 0.7; transform-origin: left center; }
+.muharram .rule { background: var(--crimson); opacity: 1; }
+
+/* ---- Buttons: one primary, one secondary, one text style ---------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 48px; padding: 0.75rem 1.5rem;
+  font-family: var(--font-body); font-size: var(--step-0); font-weight: 600; letter-spacing: 0.01em;
+  line-height: 1.2; text-decoration: none; border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.btn svg { width: 1.125em; height: 1.125em; flex: none; }
+
+/* Primary: teal fill. The one action that matters on a screen. */
+.btn--primary { background: var(--teal); color: var(--paper); }
+.btn--primary:hover { background: var(--teal-deep); }
+
+/* Secondary: teal outline. Supports the primary, never competes with it. */
+.btn--secondary { background: transparent; color: var(--teal); border-color: var(--teal); }
+.btn--secondary:hover { background: var(--teal-soft); }
+
+/* Text link with arrow: for "See all", "Watch recording". */
+.link-arrow {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-weight: 600; color: var(--teal); text-decoration: none;
+  border-bottom: 1px solid var(--gold); padding-bottom: 2px;
+}
+.link-arrow svg { width: 1em; height: 1em; transition: transform var(--dur-fast) var(--ease-out); }
+.link-arrow:hover svg { transform: translateX(3px); }
+
+/* Small size for card actions. */
+.btn--sm { min-height: 44px; padding: 0.5rem 1rem; font-size: 0.9375rem; }
+
+/* On teal-deep: gold fill / paper outline. */
+.on-dark .btn--primary { background: var(--gold); color: var(--teal-deep); }
+.on-dark .btn--primary:hover { background: #D1AD74; }
+.on-dark .btn--secondary { color: var(--paper); border-color: rgba(246, 243, 236, 0.6); }
+.on-dark .btn--secondary:hover { background: rgba(246, 243, 236, 0.08); }
+.on-dark .link-arrow { color: var(--paper); }
+
+/* Muharram mode: crimson fill / quiet outline. */
+.muharram .btn--primary { background: var(--crimson); color: var(--mourning-text); }
+.muharram .btn--primary:hover { background: #8C2626; }
+.muharram .btn--secondary { color: var(--mourning-text); border-color: rgba(217, 214, 208, 0.45); }
+.muharram .btn--secondary:hover { background: rgba(217, 214, 208, 0.06); }
+.muharram .link-arrow { color: var(--mourning-text); border-bottom-color: var(--crimson); }
+
+/* States: disabled and busy (loading). */
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
+.btn[aria-busy="true"] { cursor: progress; }
+.btn[aria-busy="true"] .btn__spinner { display: inline-block; }
+.btn__spinner {
+  display: none; width: 1em; height: 1em; border-radius: 50%;
+  border: 2px solid currentColor; border-right-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Filter chips: toggle buttons (aria-pressed), tick shows selection --- */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: 40px; padding: 0.375rem 0.875rem;
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  font-size: 0.9375rem; font-weight: 500;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.chip:hover { border-color: var(--teal); }
+.chip__tick { width: 0.9em; height: 0.9em; display: none; }
+.chip[aria-pressed="true"] { background: var(--teal-soft); border-color: var(--teal); color: var(--teal-deep); font-weight: 600; }
+.chip[aria-pressed="true"] .chip__tick { display: block; }
+
+/* ---- Status tags: always text + shape, never colour alone ---------------- */
+.tag {
+  display: inline-flex; align-items: center; gap: 0.4em;
+  padding: 0.2rem 0.6rem; border-radius: var(--radius);
+  font-size: var(--step--1); font-weight: 600; letter-spacing: 0.02em; line-height: 1.5;
+}
+.tag::before { content: ""; width: 0.5em; height: 0.5em; flex: none; }
+.tag--open { background: var(--teal-soft); color: var(--teal-deep); }
+.tag--open::before { background: var(--teal); border-radius: 50%; }                         /* filled dot */
+.tag--soon { background: transparent; color: var(--gold-text); box-shadow: inset 0 0 0 1px var(--gold); }
+.tag--soon::before { border: 1.5px solid var(--gold-text); border-radius: 50%; }             /* hollow dot */
+.tag--full { background: var(--paper-2); color: var(--ink-muted); }
+.tag--full::before { background: var(--ink-muted); height: 1.5px; }                         /* dash */
+.tag--live { background: var(--crimson); color: var(--mourning-text); }
+.tag--live::before { background: var(--mourning-text); border-radius: 50%; }
+
+/* ---- Card: hairline-topped panel, no shadows ----------------------------- */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold);
+  border-radius: var(--radius);
+}
+.section--alt .card { background: var(--paper); }
+.card__title { font-size: var(--step-2); }
+.card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); }
+.card__foot { margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; }
+
+/* Definition list inside cards: "Level — Beginner" rows. */
+.meta { display: grid; grid-template-columns: auto 1fr; gap: var(--space-2) var(--space-4); font-size: 0.9375rem; }
+.meta dt { color: var(--ink-muted); }
+.meta dd { color: var(--ink); font-weight: 500; }
+
+/* Program card: Arabic name above English. */
+.program__ar { color: var(--gold-text); font-size: 1.5rem; line-height: 1.4; }
+.on-dark .program__ar { color: var(--gold); }
+
+/* Lecture card: light YouTube embed — a thumbnail button until tapped. */
+.lite-embed {
+  position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 0;
+  background: var(--teal-deep); color: var(--paper); overflow: hidden; border-radius: var(--radius);
+}
+.lite-embed img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+.lite-embed__play {
+  position: absolute; inset: 0; margin: auto; width: 64px; height: 64px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: rgba(12, 42, 48, 0.8); border: 1px solid var(--gold);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.lite-embed__play svg { width: 22px; height: 22px; margin-left: 3px; }
+.lite-embed:hover .lite-embed__play { transform: scale(1.06); }
+.lite-embed__duration { position: absolute; right: var(--space-3); bottom: var(--space-3); font-size: var(--step--1); background: rgba(12,42,48,.85); padding: 0.1rem 0.45rem; }
+
+/* ---- The "now" strip: date, prayers, next program ------------------------ */
+.now-strip {
+  display: grid; gap: 0;
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--line);
+}
+.now-strip__cell { padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
+.now-strip__cell:last-child { border-bottom: 0; }
+.now-strip__k { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-text); }
+.now-strip__v { font-variant-numeric: lining-nums; font-family: var(--font-display); font-size: var(--step-2); color: var(--teal); line-height: 1.2; }
+.now-strip__sub { font-size: 0.9375rem; color: var(--ink-muted); }
+@media (min-width: 900px) {
+  .now-strip { grid-template-columns: 1fr 1.6fr 1fr; }
+  .now-strip__cell { padding: var(--space-5) var(--space-5); border-bottom: 0; border-left: 1px solid var(--line); }
+  .now-strip__cell:first-child { border-left: 0; padding-left: 0; }
+}
+
+/* Prayer list: next prayer marked with a label AND a rule (not colour only). */
+.prayers { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2) var(--space-4); list-style: none; padding: 0; margin-top: var(--space-2); }
+@media (min-width: 480px) { .prayers { grid-template-columns: repeat(6, auto); } }
+.prayers li { display: grid; font-size: 0.875rem; color: var(--ink-muted); padding-top: var(--space-2); border-top: 2px solid transparent; }
+.prayers b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; font-size: 1rem; }
+.prayers li[aria-current="time"] { border-top-color: var(--teal); color: var(--teal); }
+.prayers li[aria-current="time"]::after { content: "Next"; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+
+/* ---- Form fields --------------------------------------------------------- */
+.field { display: grid; gap: var(--space-2); }
+.field__label { font-weight: 600; font-size: 0.9375rem; color: var(--ink); }
+.field__label .optional { font-weight: 400; color: var(--ink-muted); }
+.field__hint { font-size: var(--step--1); color: var(--ink-muted); }
+.input, .select, .textarea {
+  width: 100%; min-height: 48px; padding: 0.7rem 0.9rem;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  font-size: 1rem; /* 16px stops iOS zooming on focus */
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.textarea { min-height: 7.5rem; resize: vertical; line-height: 1.5; }
+.input:hover, .select:hover, .textarea:hover { border-color: var(--teal); }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-soft), 0 0 0 4px var(--teal); }
+.select {
+  appearance: none; padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23123D45' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.1rem;
+}
+/* Error state: border + icon + message text (not colour alone). */
+.field.is-invalid .input, .field.is-invalid .select, .field.is-invalid .textarea { border-color: var(--error); border-width: 2px; }
+.field__error { display: none; align-items: flex-start; gap: var(--space-2); font-size: 0.875rem; font-weight: 500; color: var(--error); }
+.field__error svg { width: 1rem; height: 1rem; flex: none; margin-top: 0.15rem; }
+.field.is-invalid .field__error { display: flex; }
+
+/* Segmented choice (radio group styled as two halves): In person / Online. */
+.segmented { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 3px; gap: 3px; border-width: 1px; min-width: 0; }
+.segmented legend { padding: 0; }
+.segmented input { position: absolute; opacity: 0; pointer-events: none; }
+.segmented label { display: flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: 42px; padding: 0 1rem; font-weight: 500; cursor: pointer; border-radius: var(--radius); transition: background-color var(--dur-fast) var(--ease-out); }
+.segmented label:hover { background: var(--paper-2); }
+.segmented input:checked + label { background: var(--teal); color: var(--paper); font-weight: 600; }
+.segmented input:focus-visible + label { outline: 2px solid var(--gold-text); outline-offset: 2px; }
+
+/* ---- Alerts: form success / failure messages ----------------------------- */
+.alert { display: flex; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-radius: var(--radius); border-left: 3px solid; }
+.alert svg { width: 1.25rem; height: 1.25rem; flex: none; margin-top: 0.2rem; }
+.alert--success { background: var(--success-bg); border-color: var(--teal); color: var(--teal-deep); }
+.alert--error { background: #F3E3DF; border-color: var(--error); color: var(--error); }
+.alert[hidden] { display: none; }
+
+/* ---- Media frame: real photography with a subtle warm grade -------------- */
+.photo { position: relative; overflow: hidden; background: var(--paper-2); border-radius: var(--radius); }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.06) saturate(0.96); }
+.muharram .photo img { filter: saturate(0.85) brightness(0.92); }
+
+/* ---- Placeholder: visible "TODO" slot for missing facts or media -------- */
+.todo {
+  display: grid; place-items: center; text-align: center; gap: var(--space-2);
+  padding: var(--space-5); min-height: 8rem;
+  border: 1px dashed var(--gold-text); border-radius: var(--radius);
+  background: repeating-linear-gradient(-45deg, transparent 0 10px, rgba(194,154,94,.07) 10px 20px);
+  color: var(--gold-text); font-size: 0.875rem; font-weight: 600;
+}
+.muharram .todo, .on-dark .todo { color: var(--mourning-muted); border-color: var(--mourning-muted); }
+.todo-inline { color: var(--gold-text); border-bottom: 1px dashed currentColor; font-weight: 600; }
+
+/* ---- Icons: thin line, 1.5px stroke, inherit colour ---------------------- */
+.icon { width: 1.25rem; height: 1.25rem; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }

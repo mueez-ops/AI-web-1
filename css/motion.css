@@ -1,0 +1,59 @@
+/* =========================================================================
+   AIAT — motion.css
+   Motion rules. Content is ALWAYS visible by default; motion classes only
+   apply after JS confirms motion is allowed (html.motion-ok). With
+   prefers-reduced-motion or no JS, everything simply shows.
+   ========================================================================= */
+
+/* ---- Reveal: fade + small rise when a block enters the screen ----------- */
+.motion-ok [data-reveal] {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+.motion-ok [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ---- Hairline draw: gold rules draw left-to-right on reveal ------------- */
+.motion-ok .rule[data-reveal] { opacity: 1; transform: scaleX(0); transition: transform var(--dur-slow) var(--ease-out); }
+.motion-ok .rule[data-reveal].is-in { transform: scaleX(1); }
+
+/* ---- Proof sequence (8.2) ------------------------------------------------
+   Default layout (phones, no JS, reduced motion): a plain vertical list.
+   Desktop with motion: .is-pinned stacks the facts in one place and GSAP
+   moves through them as you scroll.                                        */
+.proof { position: relative; }
+.proof__inner { display: grid; gap: var(--space-7); }
+.proof__media { position: relative; aspect-ratio: 4 / 3; }
+.proof__media .photo, .proof__media .todo { position: absolute; inset: 0; }
+.proof__facts { list-style: none; padding: 0; display: grid; gap: var(--space-7); }
+.proof__fact { display: grid; gap: var(--space-2); border-top: 1px solid var(--gold); padding-top: var(--space-4); }
+.proof__num {
+  font-family: var(--font-display); font-weight: 400; font-size: var(--step-5);
+  line-height: 0.9; color: var(--teal); font-variant-numeric: lining-nums tabular-nums;
+}
+.proof__text { font-size: var(--step-1); color: var(--ink); max-width: 28ch; }
+.proof__rail { display: none; }
+
+/* Desktop + motion allowed: pinned, one fact at a time. */
+.proof.is-pinned .proof__inner {
+  min-height: 100vh; min-height: 100svh;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center; gap: var(--space-8);
+}
+.proof.is-pinned .proof__facts { position: relative; height: 22rem; gap: 0; }
+.proof.is-pinned .proof__fact { position: absolute; inset: 0 0 auto 0; opacity: 0; }
+.proof.is-pinned .proof__fact:first-child { opacity: 1; }
+.proof.is-pinned .proof__media > *:not(:first-child) { opacity: 0; }
+.proof.is-pinned .proof__rail {
+  display: flex; gap: var(--space-2); position: absolute; left: 0; bottom: 0;
+}
+.proof__tick { width: 2.5rem; height: 2px; background: var(--line); position: relative; overflow: hidden; }
+.proof__tick span { position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+
+/* ---- Reduced motion: switch every transition and animation off ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+  .btn__spinner { animation: none; border-right-color: currentColor; opacity: 0.6; }
+}

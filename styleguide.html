@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIAT Styleguide</title>
+  <meta name="description" content="Internal Phase 0 styleguide for the Ali Ibn-e-Abitalib Islamic Institution website. Not for publishing.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#123D45">
+
+  <!-- Fonts: Cormorant Garamond (display), Manrope (interface), Amiri (Arabic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/motion.css">
+
+  <!-- Styleguide-only layout (not used on real pages) -->
+  <style>
+    .sg-bar { border-bottom: 1px solid var(--line); background: var(--paper); }
+    .sg-bar__in { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; justify-content: space-between; padding-block: var(--space-4); }
+    .sg-bar__title { font-size: var(--step--1); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+    .sg-nav { display: flex; gap: var(--space-2) var(--space-4); flex-wrap: wrap; list-style: none; padding: 0; font-size: .875rem; }
+    .sg-nav a { text-decoration: none; color: var(--ink-muted); display: inline-block; padding-block: .35rem; }
+    .sg-nav a:hover { color: var(--teal); }
+    .sg-intro { padding-block: clamp(3rem, 2rem + 6vw, 7rem) var(--space-8); }
+    .sg-intro h1 { max-width: 14ch; margin-top: var(--space-5); }
+    .sg-intro .lead { font-size: var(--step-1); color: var(--ink-muted); margin-top: var(--space-5); }
+    .sg-logo-slot { width: 112px; min-height: 112px; padding: var(--space-3); font-size: .75rem; }
+    .sg-note { font-size: .875rem; color: var(--ink-muted); max-width: 70ch; }
+    .sg-note b { color: var(--ink); font-weight: 600; }
+    .sg-sub { font-family: var(--font-body); font-size: var(--step--1); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin: var(--space-7) 0 var(--space-4); }
+
+    /* Palette swatches */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-4); list-style: none; padding: 0; }
+    .swatch__chip { height: 92px; border-radius: var(--radius); border: 1px solid var(--line); }
+    .swatch__name { font-weight: 600; font-size: .875rem; margin-top: var(--space-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .swatch__hex { font-size: .8125rem; color: var(--ink-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .swatch__role { font-size: .8125rem; color: var(--ink-muted); line-height: 1.45; margin-top: var(--space-1); }
+    .muharram .swatch__hex, .muharram .swatch__role { color: var(--mourning-muted); }
+    .sg-dark-panel { padding: var(--space-6) var(--space-5); border-radius: var(--radius); }
+
+    /* Contrast table */
+    .contrast { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .contrast th, .contrast td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .contrast th { font-weight: 600; color: var(--ink-muted); font-size: .8125rem; }
+    .contrast__sample { display: inline-block; padding: .15rem .55rem; border-radius: var(--radius); font-weight: 600; white-space: nowrap; }
+    .contrast__ratio { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Type specimens */
+    .specimen { display: grid; gap: var(--space-2); padding-block: var(--space-5); border-bottom: 1px solid var(--line); }
+    @media (min-width: 900px) { .specimen { grid-template-columns: 220px 1fr; gap: var(--space-6); align-items: baseline; } }
+    .specimen__meta { font-size: .8125rem; color: var(--ink-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.5; }
+    .specimen__meta b { color: var(--ink); font-family: var(--font-body); font-weight: 600; display: block; }
+    .specimen h1, .specimen h2, .specimen h3 { max-width: 22ch; }
+
+    /* Surfaces for button demo */
+    .surfaces { display: grid; gap: var(--space-4); }
+    @media (min-width: 1024px) { .surfaces { grid-template-columns: repeat(3, 1fr); } }
+    .surface { padding: var(--space-6) var(--space-5); border-radius: var(--radius); border: 1px solid var(--line); display: grid; gap: var(--space-5); align-content: start; }
+    .surface__name { font-size: var(--step--1); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+    .is-focus-demo { outline: 2px solid var(--gold-text); outline-offset: 3px; }
+
+    /* Time-zone switch bar */
+    .tz-bar { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: center; margin-bottom: var(--space-5); }
+    .tz-bar__note { font-size: .875rem; color: var(--ink-muted); }
+
+    /* Proof demo spacing so there is room to scroll */
+    .sg-proof-after { height: 30vh; }
+
+    /* Muharram demo */
+    .m-hero { display: grid; gap: var(--space-7); }
+    @media (min-width: 1024px) { .m-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); align-items: end; } }
+    .m-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-5); }
+    .m-title [lang="ar"] { font-size: var(--step-3); color: var(--mourning-muted); line-height: 1.2; }
+    .nights { list-style: none; padding: 0; display: grid; gap: 0; margin-top: var(--space-7); border-top: 1px solid var(--crimson); }
+    .night { display: grid; grid-template-columns: 4.5rem 1fr; gap: var(--space-4); padding-block: var(--space-5); border-bottom: 1px solid var(--mourning-line); align-items: baseline; }
+    .night__n { font-variant-numeric: lining-nums; font-family: var(--font-display); font-size: var(--step-2); color: var(--mourning-muted); }
+    .night__body { display: grid; gap: var(--space-2); }
+    @media (min-width: 768px) { .night { grid-template-columns: 6rem 1fr auto; } }
+
+    /* Footer demo */
+    .sg-footer { padding-block: var(--space-8) var(--space-6); }
+    .sg-footer__grid { display: grid; gap: var(--space-6); }
+    @media (min-width: 768px) { .sg-footer__grid { grid-template-columns: 2fr 1fr 1fr; } }
+    .sg-footer ul { list-style: none; padding: 0; display: grid; gap: var(--space-2); }
+    .sg-footer__base { margin-top: var(--space-7); padding-top: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); font-size: .875rem; color: rgba(246,243,236,.75); }
+
+    /* Approval checklist */
+    .decisions { list-style: none; padding: 0; display: grid; gap: 0; counter-reset: d; }
+    .decisions li { counter-increment: d; display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--space-3); padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+    .decisions li::before { content: counter(d, decimal-leading-zero); font-family: var(--font-display); font-size: 1.375rem; color: var(--gold-text); line-height: 1.2; }
+    .decisions p { max-width: 70ch; }
+  </style>
+
+  <!-- GSAP + ScrollTrigger (the only allowed library). Deferred: content never waits for it. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="js/motion.js"></script>
+</head>
+<body>
+
+<!-- Icon sprite: thin line icons, 1.5px stroke. Use with <svg class="icon"><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="1"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-live" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a5.6 5.6 0 0 0 0 8M16 8a5.6 5.6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Styleguide bar: title and jump links -->
+<header class="sg-bar">
+  <div class="container sg-bar__in">
+    <p class="sg-bar__title">AIAT · Styleguide · Phase 0 · Internal</p>
+    <nav aria-label="Styleguide sections">
+      <ul class="sg-nav">
+        <li><a href="#palette">Palette</a></li>
+        <li><a href="#type">Type</a></li>
+        <li><a href="#structure">Structure</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#chips">Chips</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#now">Now strip</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#motion">Motion</a></li>
+        <li><a href="#muharram">Muharram</a></li>
+        <li><a href="#decisions">To approve</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Intro -->
+  <section class="sg-intro container" aria-labelledby="sg-title">
+    <!-- TODO: logo — images/logo.png is not in the repository yet -->
+    <div class="todo sg-logo-slot" role="img" aria-label="Logo placeholder: logo file not supplied yet">Logo<br>file needed</div>
+    <h1 id="sg-title">Ali Ibn-e-Abitalib Islamic Institution</h1>
+    <p class="lead">The design system for the AIAT website, shown before any page is built. Review the colours, type, components and the one scroll sample, then approve or ask for changes.</p>
+    <p class="sg-note" style="margin-top: var(--space-4)">Today: <b data-today-hijri>—</b> · <span data-today-greg>—</span> (Quetta)</p>
+  </section>
+
+  <!-- 01 Palette -->
+  <section class="section section--alt" id="palette" aria-labelledby="palette-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">01</span> Palette</p>
+        <h2 id="palette-h">Teal, ivory and gold, from the logo</h2>
+        <p>Ivory paper, teal ink and thin gold lines. Once a year, for Muharram, the page turns dark.</p>
+      </div>
+
+      <h3 class="sg-sub">Brand</h3>
+      <ul class="swatches" data-swatches>
+        <li><div class="swatch__chip" style="background:var(--paper)"></div><p class="swatch__name">--paper</p><p class="swatch__hex" data-var="--paper"></p><p class="swatch__role">Main background</p></li>
+        <li><div class="swatch__chip" style="background:var(--paper-2)"></div><p class="swatch__name">--paper-2</p><p class="swatch__hex" data-var="--paper-2"></p><p class="swatch__role">Alternate sections, surfaces</p></li>
+        <li><div class="swatch__chip" style="background:var(--ink)"></div><p class="swatch__name">--ink</p><p class="swatch__hex" data-var="--ink"></p><p class="swatch__role">Body text</p></li>
+        <li><div class="swatch__chip" style="background:var(--ink-muted)"></div><p class="swatch__name">--ink-muted</p><p class="swatch__hex" data-var="--ink-muted"></p><p class="swatch__role">Secondary text <i>(added)</i></p></li>
+        <li><div class="swatch__chip" style="background:var(--teal)"></div><p class="swatch__name">--teal</p><p class="swatch__hex" data-var="--teal"></p><p class="swatch__role">Brand, headings, primary buttons</p></li>
+        <li><div class="swatch__chip" style="background:var(--teal-deep)"></div><p class="swatch__name">--teal-deep</p><p class="swatch__hex" data-var="--teal-deep"></p><p class="swatch__role">Dark sections, footer</p></li>
+        <li><div class="swatch__chip" style="background:var(--teal-soft)"></div><p class="swatch__name">--teal-soft</p><p class="swatch__hex" data-var="--teal-soft"></p><p class="swatch__role">Tints, tags, selected filters</p></li>
+        <li><div class="swatch__chip" style="background:var(--gold)"></div><p class="swatch__name">--gold</p><p class="swatch__hex" data-var="--gold"></p><p class="swatch__role">Rules and icons. Text only on dark.</p></li>
+        <li><div class="swatch__chip" style="background:var(--gold-text)"></div><p class="swatch__name">--gold-text</p><p class="swatch__hex" data-var="--gold-text"></p><p class="swatch__role">Small gold text on light <i>(darkened from #8A6631)</i></p></li>
+      </ul>
+
+      <h3 class="sg-sub">Muharram mode</h3>
+      <div class="muharram sg-dark-panel">
+        <ul class="swatches">
+          <li><div class="swatch__chip" style="background:var(--mourning);border-color:var(--mourning-line)"></div><p class="swatch__name">--mourning</p><p class="swatch__hex" data-var="--mourning"></p><p class="swatch__role">Background</p></li>
+          <li><div class="swatch__chip" style="background:var(--mourning-text)"></div><p class="swatch__name">--mourning-text</p><p class="swatch__hex" data-var="--mourning-text"></p><p class="swatch__role">Text</p></li>
+          <li><div class="swatch__chip" style="background:var(--mourning-muted)"></div><p class="swatch__name">--mourning-muted</p><p class="swatch__hex" data-var="--mourning-muted"></p><p class="swatch__role">Secondary text <i>(added)</i></p></li>
+          <li><div class="swatch__chip" style="background:var(--crimson)"></div><p class="swatch__name">--crimson</p><p class="swatch__hex" data-var="--crimson"></p><p class="swatch__role">The only accent. Rules and fills, never text.</p></li>
+        </ul>
+      </div>
+
+      <h3 class="sg-sub">Contrast, measured live from the tokens above</h3>
+      <div class="table-scroll">
+        <table class="contrast" data-contrast>
+          <thead><tr><th scope="col">Pair</th><th scope="col">Sample</th><th scope="col">Ratio</th><th scope="col">Allowed use</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="sg-note" style="margin-top: var(--space-4)">WCAG AA requires <b>4.5:1</b> for body text and <b>3:1</b> for large text (24px+) and for icons and borders.</p>
+    </div>
+  </section>
+
+  <!-- 02 Typography -->
+  <section class="section" id="type" aria-labelledby="type-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">02</span> Type</p>
+        <h2 id="type-h">Seven sizes, three families</h2>
+        <p>Cormorant Garamond for headings, only at 24px and above, where its fine strokes hold up. Manrope for everything you read or tap. Amiri for Arabic. Nothing heavier than 600.</p>
+      </div>
+
+      <div class="specimen">
+        <p class="specimen__meta"><b>Display</b>--step-4 · 44–88px<br>Cormorant 400</p>
+        <h1 style="font-size:var(--step-4)">Ali Ibn-e-Abitalib Islamic Institution</h1>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Heading 2</b>--step-3 · 32–52px<br>Cormorant 500</p>
+        <h2>Ten nights of Muharram</h2>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Heading 3 / card title</b>--step-2 · 24–32px<br>Cormorant 500</p>
+        <h3>Tajweed</h3>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Lead</b>--step-1 · 18–21px<br>Manrope 400</p>
+        <p style="font-size:var(--step-1)">Qur'an, Tajweed, Ahkam and Hawza, taught in Quetta and online.</p>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Body</b>--step-0 · 16–17px<br>Manrope 400 / 600, line-height 1.65</p>
+        <p>AIAT was founded in 1992 and has served the community in Quetta since 2018. Some classes are taught online, including for students abroad. <strong>Semibold 600</strong> is the heaviest weight used anywhere.</p>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Label / meta</b>--step--1 · 13px<br>Manrope 600, tracked caps</p>
+        <p class="label"><span class="label__num">04</span> The Year</p>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Proof numeral</b>--step-5 · 64–144px<br>Cormorant 400, lining figures</p>
+        <p class="proof__num">1992</p>
+      </div>
+      <div class="specimen">
+        <p class="specimen__meta"><b>Arabic</b>Amiri 400, RTL, 1.2× size<br>Program names. Spellings to confirm.</p>
+        <!-- TODO: Mueez to confirm Arabic spellings of program names -->
+        <p lang="ar" style="font-size:2rem;color:var(--gold-text)">محرّم · رمضان · ليلة القدر · عيد الغدير</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Structure -->
+  <section class="section section--alt" id="structure" aria-labelledby="structure-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">03</span> Structure</p>
+        <h2 id="structure-h">Numbered labels and gold hairlines, instead of boxes</h2>
+        <p>Every chapter opens with a small numbered label, then a heading, then one short line. Blocks are separated by a single gold hairline that draws across as it comes into view. There are no drop shadows anywhere.</p>
+      </div>
+      <hr class="rule" data-reveal>
+      <div class="grid grid--3" style="margin-top: var(--space-6)">
+        <div class="stack"><p class="label"><span class="label__num">01</span> Now</p><p class="sg-note">The living noticeboard: today's date, prayers, what's next.</p></div>
+        <div class="stack"><p class="label"><span class="label__num">03</span> Learn</p><p class="sg-note">The class finder, where enrolment comes from.</p></div>
+        <div class="stack"><p class="label"><span class="label__num">04</span> The Year</p><p class="sg-note">The Islamic year as a timeline.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Buttons -->
+  <section class="section" id="buttons" aria-labelledby="buttons-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">04</span> Buttons</p>
+        <h2 id="buttons-h">One primary, one secondary, one text link</h2>
+        <p>Each screen has one primary action. Every button is at least 48px tall for thumbs.</p>
+      </div>
+
+      <div class="surfaces">
+        <div class="surface">
+          <p class="surface__name">On paper</p>
+          <div class="cluster">
+            <a class="btn btn--primary" href="#forms">Join a class</a>
+            <a class="btn btn--secondary" href="#forms"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Message on WhatsApp</a>
+          </div>
+          <a class="link-arrow" href="#cards">See all classes <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="surface on-dark">
+          <p class="surface__name">On teal-deep</p>
+          <div class="cluster">
+            <a class="btn btn--primary" href="#forms">Request a seat</a>
+            <a class="btn btn--secondary" href="#cards"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Add to calendar</a>
+          </div>
+          <a class="link-arrow" href="#cards">See the whole year <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="surface muharram">
+          <p class="surface__name">Muharram mode</p>
+          <div class="cluster">
+            <a class="btn btn--primary" href="#muharram"><svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>Watch live on YouTube</a>
+            <a class="btn btn--secondary" href="#muharram">The ten nights</a>
+          </div>
+          <a class="link-arrow" href="#muharram">Watch the recording <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
+      <h3 class="sg-sub">States</h3>
+      <div class="cluster" style="--cluster: var(--space-4)">
+        <button class="btn btn--primary" type="button">Default</button>
+        <button class="btn btn--primary is-focus-demo" type="button">Keyboard focus</button>
+        <button class="btn btn--primary" type="button" aria-busy="true"><span class="btn__spinner" aria-hidden="true"></span>Sending…</button>
+        <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        <button class="btn btn--secondary btn--sm" type="button">Small (card action)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Chips & tags -->
+  <section class="section section--alt" id="chips" aria-labelledby="chips-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">05</span> Chips &amp; tags</p>
+        <h2 id="chips-h">Filters you can tap, and statuses you can read</h2>
+        <p>A selected filter shows a tick as well as a colour. Status tags always say what they mean in words, with a different shape for each.</p>
+      </div>
+
+      <h3 class="sg-sub" id="chips-subject">Filter chips (tap them)</h3>
+      <div class="cluster" role="group" aria-labelledby="chips-subject" data-chips>
+        <button class="chip" type="button" aria-pressed="true"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>All subjects</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>Qur'an</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>Tajweed</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>Ahkam</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>Hawza</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="icon chip__tick" aria-hidden="true"><use href="#i-check"/></svg>Online</button>
+      </div>
+
+      <h3 class="sg-sub">Status tags</h3>
+      <div class="cluster">
+        <span class="tag tag--open">Open</span>
+        <span class="tag tag--soon">Starting soon</span>
+        <span class="tag tag--full">Full</span>
+        <span class="tag tag--live">Live now</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Cards -->
+  <section class="section" id="cards" aria-labelledby="cards-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">06</span> Cards</p>
+        <h2 id="cards-h">Class, program and lecture cards</h2>
+        <p>Each card has a gold top edge, a hairline border and no shadow. <span class="todo-inline">The values below are sample data to show the layout, not real classes.</span></p>
+      </div>
+
+      <!-- Time-zone switch: times stored in Pakistan time, shown in the visitor's zone on request -->
+      <div class="tz-bar">
+        <fieldset class="segmented" data-tz-switch>
+          <legend class="visually-hidden">Show class times in</legend>
+          <input type="radio" name="tz" id="tz-pk" value="pk" checked><label for="tz-pk">Pakistan time</label>
+          <input type="radio" name="tz" id="tz-me" value="me"><label for="tz-me" data-tz-label>My time</label>
+        </fieldset>
+        <p class="tz-bar__note" data-tz-note aria-live="polite">Times shown in Pakistan time (PKT, UTC+5).</p>
+      </div>
+
+      <div class="grid grid--3">
+        <!-- Class card (sample data) -->
+        <article class="card" aria-labelledby="c1">
+          <div class="card__head"><h3 class="card__title" id="c1">Tajweed</h3><span class="tag tag--open">Open</span></div>
+          <dl class="meta">
+            <dt>Level</dt><dd>Sample level</dd>
+            <dt>Ages</dt><dd>Sample ages</dd>
+            <dt>Mode</dt><dd>In person &amp; online</dd>
+            <dt>When</dt><dd>Mon · Wed · <span data-time data-start="17:00" data-end="18:00">17:00–18:00</span></dd>
+            <dt>Teacher</dt><dd><span class="todo-inline">TODO</span></dd>
+          </dl>
+          <div class="card__foot"><a class="btn btn--primary btn--sm" href="#forms">Request a seat</a></div>
+        </article>
+        <article class="card" aria-labelledby="c2">
+          <div class="card__head"><h3 class="card__title" id="c2">Ahkam</h3><span class="tag tag--soon">Starting soon</span></div>
+          <dl class="meta">
+            <dt>Level</dt><dd>Sample level</dd>
+            <dt>Ages</dt><dd>Sample ages</dd>
+            <dt>Mode</dt><dd>Online</dd>
+            <dt>When</dt><dd>Sat · <span data-time data-start="20:30" data-end="21:30">20:30–21:30</span></dd>
+            <dt>Teacher</dt><dd><span class="todo-inline">TODO</span></dd>
+          </dl>
+          <div class="card__foot"><a class="btn btn--primary btn--sm" href="#forms">Request a seat</a></div>
+        </article>
+        <article class="card" aria-labelledby="c3">
+          <div class="card__head"><h3 class="card__title" id="c3">Qur'an</h3><span class="tag tag--full">Full</span></div>
+          <dl class="meta">
+            <dt>Level</dt><dd>Sample level</dd>
+            <dt>Ages</dt><dd>Sample ages</dd>
+            <dt>Mode</dt><dd>In person</dd>
+            <dt>When</dt><dd>Daily · <span data-time data-start="06:00" data-end="07:00">06:00–07:00</span></dd>
+            <dt>Teacher</dt><dd><span class="todo-inline">TODO</span></dd>
+          </dl>
+          <div class="card__foot"><span class="sg-note">This class is full.</span><a class="link-arrow" href="#forms">Join the waiting list <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        </article>
+      </div>
+
+      <div class="grid grid--3" style="margin-top: var(--space-6)">
+        <!-- Program card -->
+        <article class="card" aria-labelledby="p1">
+          <p class="program__ar" lang="ar">عيد الغدير</p>
+          <h3 class="card__title" id="p1">Eid al-Ghadir</h3>
+          <p class="sg-note"><svg class="icon" aria-hidden="true" style="display:inline;vertical-align:-0.25em"><use href="#i-calendar"/></svg> <span class="todo-inline">Date TODO</span></p>
+          <div class="card__foot"><button class="btn btn--secondary btn--sm" type="button" disabled title="Enabled once dates are confirmed">Add to calendar</button></div>
+        </article>
+        <article class="card" aria-labelledby="p2">
+          <p class="program__ar" lang="ar">ليلة القدر</p>
+          <h3 class="card__title" id="p2">Shab-e-Qadr</h3>
+          <p class="sg-note"><svg class="icon" aria-hidden="true" style="display:inline;vertical-align:-0.25em"><use href="#i-calendar"/></svg> <span class="todo-inline">Date TODO</span></p>
+          <div class="card__foot"><button class="btn btn--secondary btn--sm" type="button" disabled title="Enabled once dates are confirmed">Add to calendar</button></div>
+        </article>
+        <!-- Lecture card with light YouTube embed (thumbnail only until tapped) -->
+        <article class="card" aria-labelledby="l1">
+          <button class="lite-embed" type="button" aria-label="Play lecture (sample — no video linked yet)">
+            <span class="lite-embed__play"><svg class="icon" aria-hidden="true" style="fill:currentColor;stroke:none"><use href="#i-play"/></svg></span>
+            <span class="lite-embed__duration">--:--</span>
+          </button>
+          <h3 class="card__title" id="l1" style="font-size:1.5rem">Lecture title</h3>
+          <p class="sg-note">Speaker · Year · Occasion. <span class="todo-inline">YouTube links TODO</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Now strip -->
+  <section class="section section--alt" id="now" aria-labelledby="now-h">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">07</span> Now strip</p>
+        <h2 id="now-h">The living noticeboard</h2>
+        <p>This is live. It shows today's Hijri date from the Umm al-Qura calendar (offset 0 until confirmed) and today's Quetta prayer times from the Aladhan API (method 0, Jafari). If the request fails, the prayer block hides itself.</p>
+      </div>
+
+      <div class="now-strip">
+        <div class="now-strip__cell">
+          <p class="now-strip__k">Today</p>
+          <p class="now-strip__v" data-today-hijri>—</p>
+          <p class="now-strip__sub" data-today-greg>—</p>
+        </div>
+        <div class="now-strip__cell" data-prayers-cell>
+          <p class="now-strip__k">Prayer times · Quetta</p>
+          <ul class="prayers" data-prayers aria-live="polite"></ul>
+          <p class="now-strip__sub" data-prayers-status>Loading…</p>
+        </div>
+        <div class="now-strip__cell">
+          <p class="now-strip__k">Next program</p>
+          <!-- Honest empty state: no confirmed program dates yet -->
+          <p class="now-strip__v">Dates coming soon</p>
+          <p class="now-strip__sub">The countdown starts once dates are added to <code>data/programs.js</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Forms -->
+  <section class="section" id="forms" aria-labelledby="forms-h">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="label"><span class="label__num">08</span> Forms</p>
+        <h2 id="forms-h">Request a seat</h2>
+        <p>The enrolment fields, with validation, a loading state, and success and error messages. <span class="todo-inline">This is a demo; nothing is sent.</span></p>
+      </div>
+
+      <form class="stack" style="--stack: var(--space-5)" novalidate data-demo-form>
+        <div class="alert alert--error" role="alert" hidden data-form-error>
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div><strong>Please check the highlighted fields.</strong><br>Nothing has been sent yet.</div>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="field">
+            <label class="field__label" for="f-name">Full name</label>
+            <input class="input" id="f-name" name="name" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-age">Age</label>
+            <input class="input" id="f-age" name="age" type="number" inputmode="numeric" min="5" max="99" required aria-describedby="f-age-err">
+            <p class="field__error" id="f-age-err"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please enter an age between 5 and 99.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="f-class">Class</label>
+          <select class="select" id="f-class" name="class" required aria-describedby="f-class-err">
+            <option value="">Choose a class</option>
+            <option>Tajweed (sample)</option>
+            <option>Ahkam (sample)</option>
+          </select>
+          <p class="field__error" id="f-class-err"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please choose a class.</p>
+        </div>
+
+        <fieldset class="field" style="border:0;padding:0">
+          <legend class="field__label" style="margin-bottom: var(--space-2)">How will you attend?</legend>
+          <div class="segmented">
+            <input type="radio" name="mode" id="m-in" value="in-person" checked><label for="m-in">In person</label>
+            <input type="radio" name="mode" id="m-on" value="online"><label for="m-on">Online</label>
+          </div>
+        </fieldset>
+
+        <div class="grid grid--2">
+          <div class="field">
+            <label class="field__label" for="f-wa">WhatsApp number</label>
+            <input class="input" id="f-wa" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required pattern="^\+?[0-9 \-]{10,16}$" aria-describedby="f-wa-hint f-wa-err">
+            <p class="field__hint" id="f-wa-hint">With country code, e.g. +92 …</p>
+            <p class="field__error" id="f-wa-err"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Please enter a WhatsApp number with country code.</p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-email">Email <span class="optional">(optional)</span></label>
+            <input class="input" id="f-email" name="email" type="email" autocomplete="email" aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>That email address doesn't look right.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="f-notes">Anything we should know? <span class="optional">(optional)</span></label>
+          <textarea class="textarea" id="f-notes" name="notes"></textarea>
+        </div>
+
+        <p class="field__hint">Your details are only used to contact you about this class. <!-- TODO: confirm privacy wording with Mueez --></p>
+
+        <div class="cluster" style="--cluster: var(--space-4)">
+          <button class="btn btn--primary" type="submit"><span class="btn__spinner" aria-hidden="true"></span><span data-submit-label>Request a seat</span></button>
+          <a class="link-arrow" href="#forms">or send this on WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="alert alert--success" role="status" hidden data-form-success tabindex="-1">
+          <svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>
+          <div><strong>Request received.</strong><br>(Demo) In the real form, this confirms that AIAT will contact you on WhatsApp.</div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 09 Motion sample: Proof (8.2) -->
+  <section class="section section--alt" id="motion" aria-labelledby="motion-h" style="padding-bottom:0">
+    <div class="container">
+      <div class="section-head">
+        <p class="label"><span class="label__num">09</span> Motion sample</p>
+        <h2 id="motion-h">Proof, one fact at a time</h2>
+        <p>On desktop this section pins in place as you scroll: facts arrive one by one, quantities count up, and the photo changes. On phones it becomes a simple list, and with reduced motion everything is shown at once. Only confirmed facts appear; students taught and Facebook followers are skipped until Mueez provides them.</p>
+      </div>
+    </div>
+
+    <div class="proof" data-proof>
+      <div class="proof__inner container">
+        <div class="proof__media">
+          <div class="todo">Photo: the institute building<br>(needed)</div>
+          <div class="todo">Photo: a class in Quetta<br>(needed)</div>
+          <figure class="photo">
+            <!-- Local working image only (images/local is git-ignored until consent is confirmed) -->
+            <img src="images/local/majlis-4x3.webp" width="1200" height="900" loading="lazy" decoding="async"
+                 alt="A night majlis in a floodlit courtyard: hundreds of people seated on red carpets before a sand-brick building with arched windows, red flags raised on tall poles."
+                 onerror="this.parentNode.outerHTML='<div class=&quot;todo&quot;>Photo: Muharram night<br>(local image not present)</div>'">
+          </figure>
+          <div class="todo">Photo: the yearly programs<br>(needed)</div>
+        </div>
+        <div style="position:relative">
+          <ol class="proof__facts">
+            <li class="proof__fact"><span class="proof__num">1992</span><span class="proof__text">Founded</span></li>
+            <li class="proof__fact"><span class="proof__num">2018</span><span class="proof__text">Serving the community in Quetta since</span></li>
+            <li class="proof__fact"><span class="proof__num" data-count="10">10</span><span class="proof__text">nights of Muharram every year, livestreamed</span></li>
+            <li class="proof__fact"><span class="proof__num" data-count="6">6</span><span class="proof__text">programs through the year</span></li>
+          </ol>
+          <div class="proof__rail" aria-hidden="true">
+            <span class="proof__tick"><span></span></span><span class="proof__tick"><span></span></span><span class="proof__tick"><span></span></span><span class="proof__tick"><span></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sg-proof-after" aria-hidden="true"></div>
+  </section>
+
+  <!-- 10 Muharram mode -->
+  <section class="section muharram" id="muharram" aria-labelledby="muharram-h">
+    <div class="container">
+      <div class="m-hero">
+        <div class="stack" style="--stack: var(--space-5)">
+          <p class="label"><span class="label__num">10</span> Muharram mode</p>
+          <div class="m-title">
+            <h2 id="muharram-h" style="font-size:var(--step-4)">Muharram</h2>
+            <p lang="ar">محرّم</p>
+          </div>
+          <hr class="rule" data-reveal>
+          <p style="font-size:var(--step-1)">The first ten nights. The head of the institute speaks each night, and every night is livestreamed on YouTube.</p>
+          <div class="cluster">
+            <span class="tag tag--live">Live now</span>
+            <span style="font-size:.875rem;color:var(--mourning-muted)">The badge only appears inside a scheduled live window.</span>
+          </div>
+          <div class="cluster">
+            <a class="btn btn--primary" href="#muharram"><svg class="icon" aria-hidden="true"><use href="#i-live"/></svg>Watch live on YouTube</a>
+            <a class="btn btn--secondary" href="#muharram">The ten nights</a>
+          </div>
+        </div>
+        <figure class="photo" style="aspect-ratio:16/9">
+          <img src="images/local/majlis-16x9.webp" width="1600" height="900" loading="lazy" decoding="async"
+               alt="A night majlis in a floodlit courtyard: a sand-brick building with arched windows, red flags on tall poles, and a large seated gathering."
+               onerror="this.parentNode.outerHTML='<div class=&quot;todo&quot; style=&quot;aspect-ratio:16/9&quot;>Photo: Muharram night<br>(local image not present)</div>'">
+        </figure>
+      </div>
+
+      <ol class="nights" aria-label="Sample of the ten nights list">
+        <li class="night">
+          <span class="night__n">Night 1</span>
+          <div class="night__body"><p><span class="todo-inline" style="color:var(--mourning-muted)">Topic TODO</span></p><p style="font-size:.875rem;color:var(--mourning-muted)">Date TODO</p></div>
+          <a class="link-arrow" href="#muharram">Watch the recording <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+        <li class="night">
+          <span class="night__n">Night 2</span>
+          <div class="night__body"><p><span class="todo-inline" style="color:var(--mourning-muted)">Topic TODO</span></p><p style="font-size:.875rem;color:var(--mourning-muted)">Date TODO</p></div>
+          <a class="link-arrow" href="#muharram">Watch the recording <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 11 Decisions to approve -->
+  <section class="section" id="decisions" aria-labelledby="decisions-h">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="label"><span class="label__num">11</span> To approve</p>
+        <h2 id="decisions-h">Decisions for Mueez</h2>
+        <p>Reply with "approved", or with changes to any of the numbered items.</p>
+      </div>
+      <ol class="decisions">
+        <li><p><b>Gold for text darkened</b> from #8A6631 to <b>#7D5D2B</b>. The original fails AA on <code>--paper-2</code> (4.2:1); the new value measures 4.87:1.</p></li>
+        <li><p><b>Two support colours added:</b> <code>--ink-muted</code> for secondary text and <code>--mourning-muted</code> for secondary text in Muharram mode.</p></li>
+        <li><p><b>Crimson is never used for text</b> (1.9:1 on mourning). It is used only for rules, the Live badge and the primary button fill.</p></li>
+        <li><p><b>Near-square corners (2px) throughout</b>, including chips: paper and stone, not app bubbles.</p></li>
+        <li><p><b>Cormorant only at 24px and above.</b> Smaller labels, meta and buttons use Manrope.</p></li>
+        <li><p><b>Years are not counted up</b> (1992 and 2018 simply appear). Only quantities count: 10 nights and 6 programs.</p></li>
+        <li><p><b>Pinned scroll only on screens 768px and wider.</b> Phones get a plain list with counters.</p></li>
+        <li><p><b>Errors on light pages use crimson</b>, always with an icon and a written message.</p></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<!-- 8.11 Footer sample -->
+<footer class="on-dark sg-footer">
+  <div class="container">
+    <div class="sg-footer__grid">
+      <div class="stack">
+        <p style="font-family:var(--font-display);font-size:var(--step-2);line-height:1.2">Ali Ibn-e-Abitalib Islamic Institution</p>
+        <p style="color:rgba(246,243,236,.78)"><svg class="icon" aria-hidden="true" style="display:inline;vertical-align:-0.25em;color:var(--gold)"><use href="#i-pin"/></svg> Quetta, Balochistan, Pakistan · <span class="todo-inline" style="color:var(--gold)">street address TODO</span></p>
+      </div>
+      <nav aria-label="Footer sample links">
+        <ul><li><a href="#cards">Learn</a></li><li><a href="#cards">The Year</a></li><li><a href="#muharram">Muharram</a></li><li><a href="#cards">Library</a></li></ul>
+      </nav>
+      <ul>
+        <li><span class="todo-inline" style="color:var(--gold)">Facebook link TODO</span></li>
+        <li><span class="todo-inline" style="color:var(--gold)">YouTube link TODO</span></li>
+      </ul>
+    </div>
+    <div class="sg-footer__base">
+      <span>© 2026 AIAT</span>
+      <span data-today-hijri>—</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Styleguide demo scripts (Phase 1+ moves the real versions into js/*.js) -->
+<script>
+(function () {
+  "use strict";
+  var root = getComputedStyle(document.documentElement);
+  function v(name) { return root.getPropertyValue(name).trim(); }
+
+  /* ---- Swatch hex values: read from CSS so they can never drift ---------- */
+  document.querySelectorAll("[data-var]").forEach(function (el) { el.textContent = v(el.getAttribute("data-var")).toUpperCase(); });
+
+  /* ---- Contrast table: WCAG ratio computed from the live tokens --------- */
+  function lum(hex) {
+    hex = hex.replace("#", "");
+    var c = [0, 2, 4].map(function (i) {
+      var x = parseInt(hex.substr(i, 2), 16) / 255;
+      return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function ratio(a, b) { var A = lum(a), B = lum(b); return (Math.max(A, B) + 0.05) / (Math.min(A, B) + 0.05); }
+  var pairs = [
+    ["--ink", "--paper", "Body text"],
+    ["--ink-muted", "--paper-2", "Secondary text"],
+    ["--teal", "--paper", "Headings, links"],
+    ["--paper", "--teal", "Primary button text"],
+    ["--gold-text", "--paper-2", "Small gold labels"],
+    ["--gold", "--paper", null],
+    ["--gold", "--teal-deep", "Gold text on dark"],
+    ["--teal-deep", "--gold", "Primary button on dark"],
+    ["--mourning-text", "--mourning", "Muharram body text"],
+    ["--mourning-muted", "--mourning", "Muharram secondary text"],
+    ["--mourning-text", "--crimson", "Muharram button text"],
+    ["--crimson", "--mourning", null],
+    ["--error", "--paper", "Error messages"]
+  ];
+  var tbody = document.querySelector("[data-contrast] tbody");
+  pairs.forEach(function (p) {
+    var fg = v(p[0]), bg = v(p[1]), r = ratio(fg, bg);
+    var use = p[2] ? (r >= 4.5 ? p[2] + " ✓ AA" : r >= 3 ? "Large text / icons only" : "Decoration only") : (r >= 3 ? "Large text / icons only" : "Decoration only, never text");
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td><code>" + p[0] + "</code> on <code>" + p[1] + "</code></td>" +
+      '<td><span class="contrast__sample" style="color:' + fg + ";background:" + bg + '">Aa 123</span></td>' +
+      '<td class="contrast__ratio">' + r.toFixed(2) + ":1</td><td>" + use + "</td>";
+    tbody.appendChild(tr);
+  });
+
+  /* ---- Today's Hijri + Gregorian date (Quetta) --------------------------- */
+  var HIJRI_OFFSET_DAYS = 0; // moves to data/settings.js in Phase 1 — TODO: confirm with Mueez
+  var TZ = "Asia/Karachi";
+  var now = new Date();
+  var hijriDate = new Date(now.getTime() + HIJRI_OFFSET_DAYS * 86400000);
+  try {
+    var hijri = new Intl.DateTimeFormat("en-GB-u-ca-islamic-umalqura", { day: "numeric", month: "long", year: "numeric", timeZone: TZ }).format(hijriDate);
+    document.querySelectorAll("[data-today-hijri]").forEach(function (el) { el.textContent = hijri; });
+  } catch (e) { /* very old browser: leave the dash */ }
+  var greg = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: TZ }).format(now);
+  document.querySelectorAll("[data-today-greg]").forEach(function (el) { el.textContent = greg; });
+
+  /* ---- Prayer times (Aladhan, method 0 = Jafari). Fails quietly. -------- */
+  var PRAYER_METHOD = 0; // moves to data/settings.js — TODO: confirm method
+  var cell = document.querySelector("[data-prayers-cell]");
+  var list = document.querySelector("[data-prayers]");
+  var status = document.querySelector("[data-prayers-status]");
+  var names = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
+  fetch("https://api.aladhan.com/v1/timingsByCity?city=Quetta&country=Pakistan&method=" + PRAYER_METHOD)
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (json) {
+      var t = json.data.timings;
+      var pk = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: TZ }).format(new Date());
+      var nextIdx = names.findIndex(function (n) { return t[n].slice(0, 5) > pk; });
+      if (nextIdx === -1) nextIdx = 0; // after Isha: Fajr is next (tomorrow)
+      names.forEach(function (n, i) {
+        var li = document.createElement("li");
+        li.innerHTML = n + " <b>" + t[n].slice(0, 5) + "</b>";
+        if (i === nextIdx) li.setAttribute("aria-current", "time");
+        list.appendChild(li);
+      });
+      status.textContent = "Method " + PRAYER_METHOD + " (Shia Ithna-Ashari). Times in PKT.";
+    })
+    .catch(function () { cell.hidden = true; }); // never show broken content
+
+  /* ---- Filter chips: single choice within the group (demo) ------------- */
+  document.querySelectorAll("[data-chips] .chip").forEach(function (chip, _, all) {
+    chip.addEventListener("click", function () {
+      all.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+    });
+  });
+
+  /* ---- Time-zone switch: PKT (UTC+5, no DST) → visitor's zone ---------- */
+  var myZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "your time zone";
+  var tzLabel = document.querySelector("[data-tz-label]");
+  var tzNote = document.querySelector("[data-tz-note]");
+  tzLabel.textContent = "My time (" + myZone.replace(/_/g, " ").split("/").pop() + ")";
+  function toLocal(hhmm) {
+    var p = hhmm.split(":");
+    var pkDay = new Intl.DateTimeFormat("en-CA", { timeZone: TZ }).format(new Date()); // "YYYY-MM-DD" in Quetta
+    var ymd = pkDay.split("-");
+    var instant = new Date(Date.UTC(+ymd[0], +ymd[1] - 1, +ymd[2], +p[0] - 5, +p[1])); // PKT is UTC+5, no DST
+    var localDay = new Intl.DateTimeFormat("en-CA").format(instant);
+    var label = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit" }).format(instant);
+    return label + (localDay > pkDay ? " (next day)" : localDay < pkDay ? " (previous day)" : "");
+  }
+  document.querySelectorAll("[data-tz-switch] input").forEach(function (input) {
+    input.addEventListener("change", function () {
+      var mine = input.value === "me" && input.checked;
+      document.querySelectorAll("[data-time]").forEach(function (el) {
+        var s = el.getAttribute("data-start"), e = el.getAttribute("data-end");
+        el.textContent = mine ? toLocal(s) + " – " + toLocal(e) : s + "–" + e;
+      });
+      tzNote.textContent = mine ? "Times shown in your time zone (" + myZone + ")." : "Times shown in Pakistan time (PKT, UTC+5).";
+    });
+  });
+
+  /* ---- Demo form: validation → loading → success (nothing is sent) ----- */
+  var form = document.querySelector("[data-demo-form]");
+  var errBox = form.querySelector("[data-form-error]");
+  var okBox = form.querySelector("[data-form-success]");
+  var submit = form.querySelector("[type=submit]");
+  var submitted = false;
+  function check(field) {
+    var input = field.querySelector("input, select, textarea");
+    var bad = !input.checkValidity();
+    field.classList.toggle("is-invalid", bad);
+    input.setAttribute("aria-invalid", String(bad));
+    return !bad;
+  }
+  var fields = Array.prototype.slice.call(form.querySelectorAll(".field")).filter(function (f) { return f.querySelector(".field__error"); });
+  fields.forEach(function (f) {
+    f.querySelector("input, select").addEventListener("blur", function () { if (submitted) check(f); });
+  });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    submitted = true;
+    okBox.hidden = true;
+    var firstBad = null;
+    fields.forEach(function (f) { if (!check(f) && !firstBad) firstBad = f; });
+    errBox.hidden = !firstBad;
+    if (firstBad) { firstBad.querySelector("input, select").focus(); return; }
+    submit.setAttribute("aria-busy", "true"); submit.disabled = true;
+    form.querySelector("[data-submit-label]").textContent = "Sending…";
+    setTimeout(function () {
+      submit.removeAttribute("aria-busy"); submit.disabled = false;
+      form.querySelector("[data-submit-label]").textContent = "Request a seat";
+      okBox.hidden = false; okBox.focus();
+    }, 1200);
+  });
+})();
+</script>
+</body>
+</html>

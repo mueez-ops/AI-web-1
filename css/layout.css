@@ -1,0 +1,45 @@
+/* =========================================================================
+   AIAT — layout.css
+   Page containers, section rhythm and the grids used across pages.
+   Mobile first: base rules are for phones, min-width queries add columns.
+   ========================================================================= */
+
+/* ---- Container: centred content with side gutters ----------------------- */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: 860px; }
+
+/* ---- Section: vertical rhythm between chapters -------------------------- */
+.section { padding-block: var(--section-y); }
+.section--alt { background: var(--paper-2); }
+.section--tight { padding-block: var(--space-8); }
+
+/* Section head: numbered label, then title, then an optional intro line. */
+.section-head { display: grid; gap: var(--space-4); margin-bottom: var(--space-7); }
+.section-head p { color: var(--ink-muted); font-size: var(--step-1); }
+.on-dark .section-head p { color: rgba(246, 243, 236, 0.78); }
+.muharram .section-head p { color: var(--mourning-muted); }
+
+/* ---- Stack: consistent vertical spacing between children ---------------- */
+.stack > * + * { margin-top: var(--stack, var(--space-4)); }
+
+/* ---- Cluster: wrapping row of items (buttons, chips, tags) -------------- */
+.cluster { display: flex; flex-wrap: wrap; gap: var(--cluster, var(--space-3)); align-items: center; }
+
+/* ---- Grids -------------------------------------------------------------- */
+.grid { display: grid; gap: var(--space-5); }
+@media (min-width: 640px) {
+  .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--sidebar { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--space-8); }
+}
+
+/* ---- Full-bleed media: breaks out of the container ---------------------- */
+.bleed { width: 100%; }
