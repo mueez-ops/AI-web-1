@@ -39,7 +39,7 @@
     "  veil = mix(veil, 0.10, light * 0.92);",
     "  veil = max(veil, (1.0 - smoothstep(0.0, 0.32, uv.y)) * 0.55);",     // keep the title band readable
     "  veil = mix(1.0, veil, uIntro);",                                    // opens from full dark
-    "  gl_FragColor = vec4(vec3(0.016, 0.012, 0.012) * veil, veil);",
+    "  gl_FragColor = vec4(vec3(0.020, 0.075, 0.085) * veil, veil);   // the logo's deep teal",
     "}"
   ].join("\n");
 

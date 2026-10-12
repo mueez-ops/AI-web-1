@@ -132,7 +132,7 @@
   /* ---- Top bar follows the colour of the section beneath it ------------ */
   if (hasGsap) {
     $$("main > section, footer").forEach(function (sec) {
-      var theme = sec.classList.contains("bone") ? "bone" : sec.classList.contains("red") ? "red" : "ink";
+      var theme = sec.classList.contains("bone") ? "bone" : sec.classList.contains("teal") ? "teal" : "ink";
       ScrollTrigger.create({ trigger: sec, start: "top 40px", end: "bottom 40px", refreshPriority: -1, // after the pinned sections
         onToggle: function (st) { if (st.isActive) root.setAttribute("data-hud", theme); } });
     });

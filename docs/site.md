@@ -16,7 +16,7 @@ There is no build step.
 | 02 | **Classes** | Pinned; four large cards move sideways as you scroll (desktop). On phones they stack. Each card links to WhatsApp with a ready message. A fifth card is the empty place for a class photo. |
 | 03 | **The ten nights** | Pinned. "THE FIRST / TEN NIGHTS" splits apart as a small window opens to full screen on the IMG_3165 courtyard video. Three lines of text and ten ticks follow. |
 | — | **Reel** | A sideways strip, draggable with the mouse: the building at night (IMG_3172), the minbar wall (IMG_3184), the photo from above, the courtyard (IMG_3162). Each clip plays only while visible. |
-| 04 | **The year** | Alam-red background. Two giant bands of program names that speed up with scrolling, then the six programs. |
+| 04 | **The year** | Logo-teal background. Two giant bands of program names that speed up with scrolling, then the six programs. |
 | 05 | **Winter camp** | Bone background, a full-width "JANUARY", and a round magnetic button to WhatsApp. |
 | 06 | **Visit & ask** | "Assalamu alaikum." A message composer (subject and mode chips, optional name) opens WhatsApp with the message written. Also the big WhatsApp number, the location, a live Quetta clock, and the empty place for the building photo. |
 | — | **Footer** | The logo on black, links, and a giant outlined "AIAT". |
@@ -41,7 +41,7 @@ There is no build step.
 - **The veil:** renders at half resolution, since it's soft smoke; the video underneath is never resampled.
 
 ## Palette and type
-- **Colours:** ink `#0A0A0A`, bone `#ECE5D8`, alam red `#C42A3C` (sampled from the flags), and gold `#BE9861` (sampled from the logo).
+- **Colours (all from the logo):** blue-green `#113A42` (dark sections use the logo's darkest teal `#0D3035`), white `#FFFFFF`, gold `#BD9862` (deeper `#9A7640` for large text on white). The logo always sits on black.
 - **Type:**
   - Archivo, condensed via its width axis, for display;
   - Geist Mono for interface labels;
