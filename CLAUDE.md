@@ -1,11 +1,10 @@
-# CLAUDE.md — AIAT website (fresh start, 2026-10-12)
+# CLAUDE.md — AIAT website (third version, 2026-10-12)
 
-The owner (Mueez) asked to **start the website from scratch with no past ideas**.
-Everything built before that (design, strategy, code) was removed. It remains in
-git history (commit 56f352c) and must not be reused unless Mueez asks for it.
+Mueez was disappointed with the earlier versions and asked for a new, more professional
+and unique site, in the style of award-winning studio sites: landonorris.com, igloo.inc,
+dontboardme.com and lusion.co. The earlier designs are in git history only; do not reuse them.
 
-Read `docs/intake.md` before doing any work. It holds the facts, the asset
-inventory and the proposed direction. `TODO.md` lists the open questions.
+Read `docs/site.md` for how the current site is built. `TODO.md` lists the open items.
 
 ## Facts provided by the owner (still valid)
 - Ali Ibn-e-Abitalib Islamic Institution (AIAT). A Shia Islamic religious institute.
@@ -32,7 +31,5 @@ inventory and the proposed direction. `TODO.md` lists the open questions.
 - **Media consent:** on 2026-10-12 Mueez approved the photos and video for the public
   website. `media/web/` (web versions) is committed; `media/originals/` stays local.
 - Nothing is published or deployed without Mueez's explicit go-ahead.
-- Creative direction "The Minbar Wall" was approved on 2026-10-12 and the site is built
-  (`index.html`, `assets/`). The logo is shown on black, as Mueez asked.
 - Rebuild `media/web/` with `tools/make-web-media.sh`. Never add AI upscaling or retouching.
 - The logo stays on black, as supplied (Mueez confirmed, 2026-10-12).

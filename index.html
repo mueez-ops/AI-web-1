@@ -1,306 +1,332 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AIAT · Ali Ibn-e-Abitalib Islamic Institution, Quetta</title>
-  <meta name="description" content="Qur'an, Tajweed, Ahkam and Hawza classes at Ali Ibn-e-Abitalib Islamic Institution in Hazara Town, Quetta, and online. Founded 1992. Ask about a class on WhatsApp.">
-  <meta name="theme-color" content="#000000">
+  <title>Ali Ibn-e-Abitalib Islamic Institution — Hazara Town, Quetta</title>
+  <meta name="description" content="Ali Ibn-e-Abitalib Islamic Institution, Hazara Town, Quetta. Founded 1992. Qur'an, Tajweed, Ahkam and Hawza, taught in person and online. Ask about a class on WhatsApp.">
+  <meta name="theme-color" content="#0A0A0A">
   <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
-
-  <!-- Sharing preview (WhatsApp, Facebook). Uses the logo only, no photos of people. -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ali Ibn-e-Abitalib Islamic Institution, Quetta">
-  <meta property="og:description" content="Qur'an, Tajweed, Ahkam and Hawza. Taught in Hazara Town, Quetta, and online. Ask about a class on WhatsApp.">
+  <meta property="og:title" content="Ali Ibn-e-Abitalib Islamic Institution — Quetta">
+  <meta property="og:description" content="Qur'an, Tajweed, Ahkam and Hawza. Hazara Town, Quetta, and online. Founded 1992.">
   <meta property="og:image" content="assets/brand/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gloock&display=swap">
-  <link rel="stylesheet" href="assets/css/site.css">
-
-  <!-- Hero poster: the first frame of the hero video, loaded first -->
-  <link rel="preload" as="image" href="media/web/hero-poster-1920.webp" media="(max-width: 899px)" fetchpriority="high">
-  <link rel="preload" as="image" href="media/web/hero-poster-3840.webp" media="(min-width: 900px)" fetchpriority="high">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="preload" as="image" href="media/web/hero-poster-1920.webp" media="(max-width: 1279px)">
+  <link rel="preload" as="image" href="media/web/hero-poster-3840.webp" media="(min-width: 1280px)">
+  <script>document.documentElement.classList.replace("no-js", "js");</script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Ali Ibn-e-Abitalib Islamic Institution",
-    "alternateName": "AIAT",
-    "foundingDate": "1992",
-    "telephone": "+923158455594",
-    "address": { "@type": "PostalAddress", "streetAddress": "Hazara Town", "addressLocality": "Quetta", "addressRegion": "Balochistan", "addressCountry": "PK" }
-  }
+  {"@context":"https://schema.org","@type":"EducationalOrganization","name":"Ali Ibn-e-Abitalib Islamic Institution","alternateName":"AIAT","foundingDate":"1992","telephone":"+923158455594","address":{"@type":"PostalAddress","streetAddress":"Hazara Town","addressLocality":"Quetta","addressRegion":"Balochistan","addressCountry":"PK"}}
   </script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ===================== Header (black, as the logo is shown on black) ===================== -->
-<header class="top">
-  <div class="wrap top__in">
-    <a class="brand" href="#top" aria-label="Ali Ibn-e-Abitalib Islamic Institution, back to top">
-      <img class="brand__mark" src="assets/brand/logo-symbol-160.png" srcset="assets/brand/logo-symbol-160.png 1x, assets/brand/logo-symbol-320.png 2x" width="69" height="43" alt="">
-      <span class="brand__name">Ali Ibn-e-Abitalib<br>Islamic Institution</span>
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <ul class="nav__links">
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#muharram">Muharram</a></li>
-        <li><a href="#year">The year</a></li>
-        <li><a href="#camp">Winter camp</a></li>
-        <li><a href="#ask">Visit</a></li>
-      </ul>
-      <details class="nav__menu">
-        <summary>Menu</summary>
-        <ul>
-          <li><a href="#classes">Classes</a></li>
-          <li><a href="#muharram">Muharram</a></li>
-          <li><a href="#year">The year</a></li>
-          <li><a href="#camp">Winter camp</a></li>
-          <li><a href="#ask">Visit</a></li>
-        </ul>
-      </details>
-    </nav>
-    <a class="btn btn--primary btn--small" href="#ask">Ask about a class</a>
+<!-- ============ Preloader ============ -->
+<div class="loader" data-loader aria-hidden="true">
+  <img class="loader__mark" src="assets/brand/logo-symbol-320.png" width="160" height="99" alt="">
+  <p class="loader__name mono" data-scramble>Ali Ibn-e-Abitalib Islamic Institution</p>
+  <p class="loader__count" data-count>000</p>
+  <p class="loader__meta mono">Hazara Town, Quetta<br>Est. 1992</p>
+</div>
+
+<!-- ============ Fixed interface ============ -->
+<header class="hud">
+  <a class="hud__brand" href="#top" aria-label="Ali Ibn-e-Abitalib Islamic Institution, back to top">
+    <span class="hud__tile"><img src="assets/brand/logo-symbol-160.png" width="44" height="27" alt=""></span>
+    <span class="mono hud__short">AIAT</span>
+  </a>
+  <p class="hud__place mono" aria-label="Local time in Quetta">Quetta <span data-clock>--:--</span> PKT</p>
+  <div class="hud__actions">
+    <a class="pill pill--red" href="#ask" data-magnetic>Ask about a class</a>
+    <button class="pill" type="button" data-menu-open aria-expanded="false" aria-controls="menu">Menu <span class="pill__dot" aria-hidden="true"></span></button>
   </div>
 </header>
 
+<nav class="menu" id="menu" aria-label="Main" data-menu hidden>
+  <ol class="menu__list">
+    <li><a href="#institute"><span class="mono">01</span>The institute</a></li>
+    <li><a href="#classes"><span class="mono">02</span>Classes</a></li>
+    <li><a href="#nights"><span class="mono">03</span>The ten nights</a></li>
+    <li><a href="#year"><span class="mono">04</span>The year</a></li>
+    <li><a href="#camp"><span class="mono">05</span>Winter camp</a></li>
+    <li><a href="#ask"><span class="mono">06</span>Visit &amp; ask</a></li>
+  </ol>
+  <div class="menu__foot mono">
+    <a href="https://wa.me/923158455594" target="_blank" rel="noopener">WhatsApp +92 315 8455594 ↗</a>
+    <span>Hazara Town, Quetta, Pakistan</span>
+    <button type="button" class="pill" data-menu-close>Close</button>
+  </div>
+</nav>
+
+<div class="cursor" data-cursor aria-hidden="true"><span class="cursor__label" data-cursor-label></span></div>
+<div class="grain" aria-hidden="true"></div>
+
 <main id="main">
 
-  <!-- ===================== 1. Hero: the minbar wall ===================== -->
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero__media" data-hero>
+  <!-- ============ 00 Hero: the lamp in the night ============ -->
+  <section class="hero" id="top" aria-labelledby="hero-title" data-hero>
+    <div class="hero__media">
       <picture>
-        <source media="(min-width: 900px)" srcset="media/web/hero-poster-3840.webp" type="image/webp">
+        <source media="(min-width: 1280px)" srcset="media/web/hero-poster-3840.webp" type="image/webp">
         <source srcset="media/web/hero-poster-1920.webp" type="image/webp">
         <img class="hero__poster" src="media/web/hero-poster-1920.jpg" width="1920" height="1080" fetchpriority="high"
-             alt="A Muharram night at the institute: Muhammad Kazim Behjati speaks from the wooden minbar beneath a large red calligraphy banner, facing a large seated gathering.">
+             alt="A Muharram night at the institute: Muhammad Kazim Behjati speaks from the minbar beneath a red calligraphy banner, facing a large seated gathering.">
       </picture>
-      <!-- Two video layers so the 4-second clip can loop with a soft crossfade. Filled in by site.js. -->
-      <video class="hero__video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-      <video class="hero__video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      <video class="hero__video" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-clip="hero"></video>
+      <video class="hero__video" muted playsinline preload="none" aria-hidden="true" tabindex="-1" data-clip="hero"></video>
     </div>
-    <div class="hero__shade" aria-hidden="true"></div>
+    <canvas class="veil" data-veil aria-hidden="true"></canvas>
 
-    <div class="wrap hero__content">
-      <p class="eyebrow">Hazara Town · Quetta</p>
-      <h1 id="hero-title">Ali <span class="nowrap">Ibn-e-Abitalib</span> Islamic Institution</h1>
-      <div class="hero__side">
-        <p class="hero__lead">Qur'an, Tajweed, Ahkam and Hawza. Taught in Quetta and online.</p>
-        <div class="actions">
-          <a class="btn btn--primary" href="#ask">Ask about a class</a>
-          <a class="btn btn--ghost" href="#classes">See the classes</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero__foot wrap">
-      <p class="hero__caption">Muharram night at the institute. Muhammad Kazim Behjati speaks from the minbar.</p>
-      <button class="roundel" type="button" data-video-toggle hidden aria-pressed="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="roundel__pause"><path d="M8 5v14M16 5v14"/></svg>
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="roundel__play"><path d="M8 5l11 7-11 7z"/></svg>
-        <span class="visually-hidden" data-video-label>Pause the video</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- ===================== 2. Facts ===================== -->
-  <section class="facts" aria-label="The institute in brief">
-    <ul class="wrap facts__list">
-      <li><strong>1992</strong><span>Founded</span></li>
-      <li><strong>2018</strong><span>Serving Quetta since</span></li>
-      <li><strong>4</strong><span>Subjects, in person and online</span></li>
-      <li><strong>6</strong><span>Programs through the year</span></li>
-    </ul>
-  </section>
-
-  <!-- ===================== 3. Classes (the main offer) ===================== -->
-  <section class="section" id="classes" aria-labelledby="classes-title">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="classes-title">Classes</h2>
-        <p>Four subjects, taught at the institute in Hazara Town and online, including for students abroad.</p>
-      </div>
-      <div class="classes">
-        <ul class="subjects">
-          <li class="subject">
-            <h3>Qur'an</h3>
-            <p>Reading the Qur'an.</p>
-            <a class="link" href="#ask" data-subject="Qur'an">Ask about Qur'an classes <span aria-hidden="true">→</span></a>
-          </li>
-          <li class="subject">
-            <h3>Tajweed</h3>
-            <p>The rules for reciting the Qur'an correctly.</p>
-            <a class="link" href="#ask" data-subject="Tajweed">Ask about Tajweed classes <span aria-hidden="true">→</span></a>
-          </li>
-          <li class="subject">
-            <h3>Ahkam</h3>
-            <p>Islamic rulings for everyday practice.</p>
-            <a class="link" href="#ask" data-subject="Ahkam">Ask about Ahkam classes <span aria-hidden="true">→</span></a>
-          </li>
-          <li class="subject">
-            <h3>Hawza</h3>
-            <p>Religious studies in the seminary tradition.</p>
-            <a class="link" href="#ask" data-subject="Hawza">Ask about Hawza studies <span aria-hidden="true">→</span></a>
-          </li>
-        </ul>
-        <!-- Space for a photo of a class (to be supplied) -->
-        <figure class="slot" role="img" aria-label="Photo of a class: to be added">
-          <span>Photo of a class</span>
-        </figure>
-      </div>
-      <p class="note">For levels, days and times, ask on WhatsApp.</p>
-    </div>
-  </section>
-
-  <!-- ===================== 4. Signature: from the crowd to the minbar ===================== -->
-  <section class="night" id="muharram" aria-labelledby="night-title" data-night>
-    <div class="night__stage">
-      <div class="night__frame">
-        <picture>
-          <source media="(max-width: 899px)" srcset="media/web/minbar-portrait-1449.webp" type="image/webp">
-          <source media="(max-width: 899px)" srcset="media/web/minbar-portrait-1449.jpg">
-          <img class="night__img" src="media/web/minbar-2576.jpg" width="2576" height="1932" loading="lazy" decoding="async"
-               alt="Seen from above: Muhammad Kazim Behjati speaks from the carved wooden minbar under the red banner, while hundreds of people sit on red carpets around him.">
-        </picture>
-      </div>
-      <div class="wrap night__text">
-        <h2 id="night-title" class="night__line">Muharram</h2>
-        <p class="night__line">The first ten nights of Muharram are the high point of the institute's year.</p>
-        <p class="night__line">Muhammad Kazim Behjati, head of the institute, speaks from the minbar every night.</p>
-        <p class="night__line">Every night is livestreamed on YouTube.<a class="link link--light" data-youtube hidden href="#" target="_blank" rel="noopener"> Watch on YouTube <span aria-hidden="true">→</span></a></p>
+    <div class="hero__ui">
+      <p class="hero__hint mono" data-hint aria-hidden="true">Move to light the night</p>
+      <h1 class="hero__title" id="hero-title">
+        <span class="fit" data-fit><span class="line"><span>Ali Ibn-e-Abitalib</span></span></span>
+        <span class="hero__sub serif"><span class="line"><span>Islamic Institution</span></span></span>
+      </h1>
+      <div class="hero__row mono">
+        <p>Qur'an · Tajweed · Ahkam · Hawza</p>
+        <p class="hero__cap">Muharram night · Muhammad Kazim Behjati on the minbar</p>
+        <p>Scroll ↓</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== 5. The year ===================== -->
-  <section class="section section--plaster" id="year" aria-labelledby="year-title">
-    <div class="wrap">
-      <div class="head">
-        <h2 id="year-title">The year at the institute</h2>
-        <p>Six programs, in the order they fall in the Islamic calendar. Dates follow the moon, so ask on WhatsApp for this year's dates.</p>
+  <!-- ============ 01 The institute (bone) ============ -->
+  <section class="statement bone" id="institute" aria-labelledby="institute-title">
+    <div class="frame">
+      <p class="tag mono" data-scramble>[01] The institute</p>
+      <h2 class="visually-hidden" id="institute-title">The institute</h2>
+      <p class="statement__text" data-words>
+        Since 1992, a house of <em class="serif">learning.</em> In Hazara Town, Quetta since 2018 — teaching Qur'an, Tajweed, Ahkam and Hawza, in person and online.
+      </p>
+      <ul class="stats" aria-label="In brief">
+        <li><span class="stats__n">1992</span><span class="mono">Founded</span></li>
+        <li><span class="stats__n">2018</span><span class="mono">In Quetta since</span></li>
+        <li><span class="stats__n">04</span><span class="mono">Disciplines</span></li>
+        <li><span class="stats__n">06</span><span class="mono">Programs a year</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 02 Classes: horizontal on desktop ============ -->
+  <section class="classes ink" id="classes" aria-labelledby="classes-title" data-classes>
+    <div class="classes__pin">
+      <div class="frame classes__head">
+        <p class="tag mono" data-scramble>[02] Classes</p>
+        <h2 class="classes__title" id="classes-title">Four disciplines.<br><em class="serif">One house.</em></h2>
+        <p class="mono classes__note">In person in Quetta · Online, including for students abroad</p>
       </div>
-      <ol class="year">
-        <li><h3>Muharram</h3><p>The first ten nights. Livestreamed on YouTube.</p></li>
-        <li><h3>Ramadan</h3><p>The month of fasting.</p></li>
-        <li><h3>Shab-e-Qadr</h3><p>The Nights of Qadr in Ramadan.</p></li>
-        <li><h3>Eid prayers</h3><p>Prayers on the day of Eid.</p></li>
-        <li><h3>Eid al-Ghadir</h3><p>The day of Ghadir.</p></li>
-        <li><h3>Winter camp</h3><p>Every January, for boys aged 10 to 17.</p></li>
+      <ol class="track" data-track>
+        <li class="card">
+          <span class="card__i mono">01 / 04</span>
+          <h3 class="card__word">Qur'an</h3>
+          <p class="card__line serif">Reading the Qur'an.</p>
+          <a class="arrow mono" href="https://wa.me/923158455594?text=Assalamu%20alaikum.%20I%20would%20like%20to%20ask%20about%20Qur'an%20classes." target="_blank" rel="noopener" data-cursor-text="Ask">Ask about Qur'an classes ↗</a>
+        </li>
+        <li class="card">
+          <span class="card__i mono">02 / 04</span>
+          <h3 class="card__word">Tajweed</h3>
+          <p class="card__line serif">The rules for reciting the Qur'an correctly.</p>
+          <a class="arrow mono" href="https://wa.me/923158455594?text=Assalamu%20alaikum.%20I%20would%20like%20to%20ask%20about%20Tajweed%20classes." target="_blank" rel="noopener" data-cursor-text="Ask">Ask about Tajweed classes ↗</a>
+        </li>
+        <li class="card">
+          <span class="card__i mono">03 / 04</span>
+          <h3 class="card__word">Ahkam</h3>
+          <p class="card__line serif">Islamic rulings for everyday practice.</p>
+          <a class="arrow mono" href="https://wa.me/923158455594?text=Assalamu%20alaikum.%20I%20would%20like%20to%20ask%20about%20Ahkam%20classes." target="_blank" rel="noopener" data-cursor-text="Ask">Ask about Ahkam classes ↗</a>
+        </li>
+        <li class="card">
+          <span class="card__i mono">04 / 04</span>
+          <h3 class="card__word">Hawza</h3>
+          <p class="card__line serif">Religious studies in the seminary tradition.</p>
+          <a class="arrow mono" href="https://wa.me/923158455594?text=Assalamu%20alaikum.%20I%20would%20like%20to%20ask%20about%20Hawza%20studies." target="_blank" rel="noopener" data-cursor-text="Ask">Ask about Hawza studies ↗</a>
+        </li>
+        <li class="card card--slot">
+          <!-- Image place: a photo of a class goes here when supplied -->
+          <div class="slot" role="img" aria-label="Photo of a class: coming soon"><span class="mono">[ Photo of a class — coming soon ]</span></div>
+          <p class="mono card__small">For levels, days and times, ask on WhatsApp.</p>
+        </li>
       </ol>
     </div>
   </section>
 
-  <!-- ===================== 6. Winter camp ===================== -->
-  <section class="section camp" id="camp" aria-labelledby="camp-title">
-    <div class="wrap camp__in">
-      <div>
-        <h2 id="camp-title">Winter camp</h2>
-        <p class="camp__lead">Every January, for boys aged 10 to 17.</p>
+  <!-- ============ 03 The ten nights: the window opens ============ -->
+  <section class="nights ink" id="nights" aria-labelledby="nights-title" data-nights>
+    <div class="nights__pin">
+      <h2 class="nights__title" id="nights-title">
+        <span class="nights__a" data-split-a>The first</span>
+        <span class="nights__b" data-split-b>ten nights</span>
+      </h2>
+      <div class="nights__window" data-window>
+        <img class="nights__poster" src="media/web/nights-poster-1920.webp" width="1920" height="1080" loading="lazy" decoding="async"
+             alt="The courtyard on a Muharram night, the camera moving across the gathering toward the minbar.">
+        <video class="nights__video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-clip="nights"></video>
       </div>
-      <div class="camp__side">
-        <p>Ask on WhatsApp for this year's dates and details.</p>
-        <a class="btn btn--primary" href="#ask" data-subject="Winter camp">Ask about the camp</a>
+      <div class="nights__text" data-nights-text>
+        <p class="tag mono">[03] Muharram</p>
+        <p class="nights__line">The first ten nights of Muharram are the high point of the institute's year.</p>
+        <p class="nights__line">Muhammad Kazim Behjati, head of the institute, speaks from the minbar every night.</p>
+        <p class="nights__line">Every night is livestreamed on YouTube.</p>
+        <ol class="ticks" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
       </div>
     </div>
   </section>
 
-  <!-- ===================== 7. Visit and ask ===================== -->
-  <section class="section section--plaster" id="ask" aria-labelledby="ask-title">
-    <div class="wrap visit">
-      <div class="visit__info">
-        <h2 id="ask-title">Visit or ask</h2>
-        <dl class="details">
-          <div><dt>Where</dt><dd>Hazara Town, Quetta, Balochistan, Pakistan</dd></div>
-          <div><dt>WhatsApp</dt><dd><a class="wa-number" href="https://wa.me/923158455594" target="_blank" rel="noopener">+92 315 8455594</a></dd></div>
-        </dl>
-        <p class="note" data-map-missing>A map link to the building will be added here.</p>
-        <a class="link" data-map hidden href="#" target="_blank" rel="noopener">Open in Google Maps <span aria-hidden="true">→</span></a>
-        <!-- Space for the daytime photo of the building (to be supplied) -->
-        <figure class="slot slot--wide" role="img" aria-label="Photo of the building: to be added">
-          <span>Photo of the building</span>
-        </figure>
+  <!-- ============ Reel: from the nights ============ -->
+  <section class="reel ink" aria-labelledby="reel-title">
+    <div class="frame reel__head">
+      <p class="tag mono" data-scramble>[—] From the nights</p>
+      <h2 class="reel__title" id="reel-title">At the <em class="serif">institute</em></h2>
+    </div>
+    <ul class="reel__strip" data-reel tabindex="0" aria-label="Clips from Muharram nights at the institute. Scroll sideways to see more." data-cursor-text="Drag">
+      <li class="clip">
+        <div class="clip__media">
+          <img src="media/web/sweep-poster-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="The institute building at night, its arched windows lit, red and black flags over the crowd in the courtyard.">
+          <video muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-clip="sweep"></video>
+        </div>
+        <p class="mono clip__cap"><span>01</span> The building at night</p>
+      </li>
+      <li class="clip">
+        <div class="clip__media">
+          <img src="media/web/front-poster-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="The minbar wall: the red banner, Muhammad Kazim Behjati on the minbar, the gathering in front.">
+          <video muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-clip="front"></video>
+        </div>
+        <p class="mono clip__cap"><span>02</span> The minbar wall</p>
+      </li>
+      <li class="clip clip--tall">
+        <div class="clip__media">
+          <picture>
+            <source srcset="media/web/minbar-portrait-1449.webp" type="image/webp">
+            <img src="media/web/minbar-portrait-1449.jpg" width="1449" height="1932" loading="lazy" decoding="async" alt="Seen from above: Muhammad Kazim Behjati speaks from the carved wooden minbar while people sit on red carpets around him.">
+          </picture>
+        </div>
+        <p class="mono clip__cap"><span>03</span> From above</p>
+      </li>
+      <li class="clip">
+        <div class="clip__media">
+          <img src="media/web/wide-poster-1920.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="The courtyard from the side: the red banner, the speaker on the minbar and the seated crowd.">
+          <video muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-clip="wide"></video>
+        </div>
+        <p class="mono clip__cap"><span>04</span> The courtyard</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ 04 The year (alam red) ============ -->
+  <section class="year red" id="year" aria-labelledby="year-title">
+    <div class="frame"><p class="tag mono" data-scramble>[04] The year</p><h2 class="visually-hidden" id="year-title">The year at the institute</h2></div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__row" data-marquee="1"><span>Muharram ✦ Ramadan ✦ Shab-e-Qadr ✦ Eid prayers ✦ Eid al-Ghadir ✦ Winter camp ✦&nbsp;</span></div>
+      <div class="marquee__row marquee__row--outline" data-marquee="-1"><span>Winter camp ✦ Eid al-Ghadir ✦ Eid prayers ✦ Shab-e-Qadr ✦ Ramadan ✦ Muharram ✦&nbsp;</span></div>
+    </div>
+    <div class="frame">
+      <ol class="programs">
+        <li><span class="mono">01</span><h3>Muharram</h3><p>The first ten nights. Livestreamed on YouTube.</p></li>
+        <li><span class="mono">02</span><h3>Ramadan</h3><p>The month of fasting.</p></li>
+        <li><span class="mono">03</span><h3>Shab-e-Qadr</h3><p>The Nights of Qadr in Ramadan.</p></li>
+        <li><span class="mono">04</span><h3>Eid prayers</h3><p>Prayers on the day of Eid.</p></li>
+        <li><span class="mono">05</span><h3>Eid al-Ghadir</h3><p>The day of Ghadir.</p></li>
+        <li><span class="mono">06</span><h3>Winter camp</h3><p>Every January, for boys aged 10 to 17.</p></li>
+      </ol>
+      <p class="mono year__note">Dates follow the moon. Ask on WhatsApp for this year's dates.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 Winter camp (bone) ============ -->
+  <section class="camp bone" id="camp" aria-labelledby="camp-title">
+    <div class="frame">
+      <p class="tag mono" data-scramble>[05] Winter camp</p>
+      <p class="camp__month fit" data-fit aria-hidden="true"><span>January</span></p>
+      <div class="camp__row">
+        <h2 class="camp__title" id="camp-title">The winter camp. <em class="serif">For boys aged 10 to 17.</em></h2>
+        <a class="round" href="https://wa.me/923158455594?text=Assalamu%20alaikum.%20I%20would%20like%20to%20ask%20about%20the%20winter%20camp." target="_blank" rel="noopener" data-magnetic data-cursor-text="Ask"><span>Ask about<br>the camp ↗</span></a>
       </div>
+    </div>
+  </section>
 
-      <form class="ask" data-ask novalidate aria-labelledby="form-title">
-        <h3 id="form-title">Ask about a class</h3>
-        <p class="ask__intro">Fill this in and tap send. WhatsApp opens with your message ready to go to the institute.</p>
+  <!-- ============ 06 Visit & ask ============ -->
+  <section class="ask ink" id="ask" aria-labelledby="ask-title">
+    <div class="frame">
+      <p class="tag mono" data-scramble>[06] Visit &amp; ask</p>
+      <h2 class="ask__hello serif" id="ask-title">Assalamu alaikum.</h2>
+      <p class="ask__lead">Ask about a class, the camp or anything else — on WhatsApp.</p>
 
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input id="f-name" name="name" autocomplete="name" required aria-describedby="f-name-err">
-          <p class="err" id="f-name-err" hidden>Please enter your name.</p>
-        </div>
-
-        <div class="field">
-          <label for="f-subject">You are asking about</label>
-          <select id="f-subject" name="subject" required aria-describedby="f-subject-err">
-            <option value="">Choose one</option>
-            <option>Qur'an</option>
-            <option>Tajweed</option>
-            <option>Ahkam</option>
-            <option>Hawza</option>
-            <option>Winter camp</option>
-            <option>Something else</option>
-          </select>
-          <p class="err" id="f-subject-err" hidden>Please choose what you are asking about.</p>
-        </div>
-
-        <fieldset class="field">
-          <legend>How would you study?</legend>
-          <div class="choice">
-            <input type="radio" id="f-mode-in" name="mode" value="In person in Quetta" checked><label for="f-mode-in">In person in Quetta</label>
-            <input type="radio" id="f-mode-on" name="mode" value="Online"><label for="f-mode-on">Online</label>
+      <form class="composer" data-composer novalidate aria-label="Write a WhatsApp message to the institute">
+        <fieldset>
+          <legend class="mono">I'm asking about</legend>
+          <div class="chips">
+            <input type="radio" name="about" id="a1" value="Qur'an classes" checked><label for="a1">Qur'an</label>
+            <input type="radio" name="about" id="a2" value="Tajweed classes"><label for="a2">Tajweed</label>
+            <input type="radio" name="about" id="a3" value="Ahkam classes"><label for="a3">Ahkam</label>
+            <input type="radio" name="about" id="a4" value="Hawza studies"><label for="a4">Hawza</label>
+            <input type="radio" name="about" id="a5" value="the winter camp"><label for="a5">Winter camp</label>
+            <input type="radio" name="about" id="a6" value="something else"><label for="a6">Something else</label>
           </div>
         </fieldset>
-
-        <div class="field">
-          <label for="f-place">Where do you live? <span class="opt">(optional)</span></label>
-          <input id="f-place" name="place" autocomplete="address-level2" placeholder="City and country">
+        <fieldset>
+          <legend class="mono">I'd study</legend>
+          <div class="chips">
+            <input type="radio" name="mode" id="m1" value="in person in Quetta" checked><label for="m1">In person</label>
+            <input type="radio" name="mode" id="m2" value="online"><label for="m2">Online</label>
+          </div>
+        </fieldset>
+        <label class="mono composer__label" for="c-name">Your name <span class="opt">(optional)</span></label>
+        <input class="composer__input" id="c-name" name="name" autocomplete="name" placeholder="Type your name">
+        <div class="composer__send">
+          <button class="round round--red" type="submit" data-magnetic data-cursor-text="Send"><span>Send on<br>WhatsApp ↗</span></button>
+          <p class="mono composer__privacy">Nothing is stored on this website. WhatsApp opens with your message ready to send to +92 315 8455594.</p>
         </div>
-
-        <div class="field">
-          <label for="f-msg">Anything else? <span class="opt">(optional)</span></label>
-          <textarea id="f-msg" name="message" rows="3"></textarea>
-        </div>
-
-        <p class="privacy">Nothing is stored on this website. Your message goes straight to the institute's WhatsApp, +92 315 8455594.</p>
-        <button class="btn btn--primary btn--full" type="submit">Send on WhatsApp</button>
-        <p class="status" data-status role="status" tabindex="-1" hidden></p>
+        <p class="composer__status mono" data-status role="status" hidden></p>
       </form>
+
+      <div class="visit">
+        <a class="visit__number" href="https://wa.me/923158455594" target="_blank" rel="noopener" data-cursor-text="Chat">+92 315 8455594</a>
+        <dl class="visit__list mono">
+          <div><dt>Where</dt><dd>Hazara Town, Quetta, Balochistan, Pakistan</dd></div>
+          <div><dt>City</dt><dd>30°11′N 67°00′E</dd></div>
+          <div><dt>Time in Quetta</dt><dd><span data-clock>--:--</span> PKT</dd></div>
+        </dl>
+        <!-- Image place: the daytime photo of the building goes here when supplied -->
+        <div class="slot slot--wide" role="img" aria-label="Photo of the building: coming soon"><span class="mono">[ Photo of the building — coming soon ]</span></div>
+      </div>
     </div>
   </section>
 </main>
 
-<!-- ===================== Footer (black, full logo) ===================== -->
-<footer class="foot">
-  <div class="wrap foot__in">
-    <img class="foot__logo" loading="lazy" decoding="async" src="assets/brand/logo-lockup-480.png" srcset="assets/brand/logo-lockup-480.png 1x, assets/brand/logo-lockup-960.png 2x" width="240" height="185"
-         alt="Logo of Ali Ibn-e-Abitalib Islamic Institution: a dome over an open book, with the name in Arabic calligraphy and Urdu.">
-    <div class="foot__text">
-      <p class="foot__name">Ali Ibn-e-Abitalib Islamic Institution</p>
-      <p>Hazara Town, Quetta, Pakistan</p>
-      <p>WhatsApp <a href="https://wa.me/923158455594" target="_blank" rel="noopener">+92 315 8455594</a></p>
-    </div>
-    <ul class="foot__nav">
+<footer class="foot ink">
+  <div class="frame foot__top">
+    <img class="foot__logo" src="assets/brand/logo-lockup-480.png" srcset="assets/brand/logo-lockup-480.png 1x, assets/brand/logo-lockup-960.png 2x" width="240" height="185" loading="lazy" decoding="async"
+         alt="Logo of Ali Ibn-e-Abitalib Islamic Institution: a dome over an open book, the name in Arabic calligraphy and Urdu.">
+    <ul class="foot__nav mono">
+      <li><a href="#institute">The institute</a></li>
       <li><a href="#classes">Classes</a></li>
-      <li><a href="#muharram">Muharram</a></li>
+      <li><a href="#nights">The ten nights</a></li>
       <li><a href="#year">The year</a></li>
       <li><a href="#camp">Winter camp</a></li>
-      <li><a href="#ask">Visit</a></li>
+      <li><a href="#ask">Visit &amp; ask</a></li>
     </ul>
   </div>
-  <p class="wrap foot__base">© 2026 Ali Ibn-e-Abitalib Islamic Institution</p>
+  <p class="foot__word fit" data-fit aria-hidden="true"><span>AIAT</span></p>
+  <div class="frame foot__base mono">
+    <span>© 2026 Ali Ibn-e-Abitalib Islamic Institution</span>
+    <span>Quetta <span data-clock>--:--</span> PKT</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
 </footer>
 
 <script src="assets/js/config.js"></script>
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/lenis.min.js" defer></script>
+<script src="assets/js/veil.js" defer></script>
+<script src="assets/js/app.js" defer></script>
 </body>
 </html>
