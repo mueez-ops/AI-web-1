@@ -1,7 +1,6 @@
-# Photos and videos (originals and web versions) are never committed:
-# the repository is public and the media shows identifiable people.
-# Rebuild web versions with tools/make-web-media.sh.
-media/
+# Original camera files stay local (large; the site uses media/web/).
+# Rebuild media/web/ from them with tools/make-web-media.sh.
+media/originals/
 # OS / editor
 .DS_Store
 Thumbs.db

@@ -1,14 +1,11 @@
 # TODO — still needed from Mueez
 
-## Decisions
-- [ ] **"Don't publish them":** please confirm what this covers. For now the photos and videos are used on the site but are **not** committed to the public GitHub repo, and nothing is deployed. Should the photos and videos appear on the public website when it goes live?
-- [ ] **The logo on black:** the dark-teal Urdu line of the logo is hard to read on black (see the footer). Choose one:
-  - keep it as it is;
-  - add a small light panel behind the logo;
-  - supply a version of the logo made for dark backgrounds.
+## Decided (2026-10-12)
+- [x] The photos and video go live with the website. Their web versions are now in the repo (`media/web/`).
+- [x] The logo stays on black as it is.
 
 ## Files
-- [ ] **Daytime photo of the building.** You mentioned it was provided, but only `logo.jpg` was in GitHub. Please upload it again. It goes into the empty "Photo of the building" place.
+- [ ] **Daytime photo of the building.** Mueez will upload it again; only `logo.jpg` was in GitHub. It goes into the empty "Photo of the building" place.
 - [ ] **Photo of a class.** It goes into the empty "Photo of a class" place.
 
 ## Facts (optional, the site works without them)

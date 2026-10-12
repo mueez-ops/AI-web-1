@@ -29,10 +29,10 @@ inventory and the proposed direction. `TODO.md` lists the open questions.
   Masters live untouched in `media/originals/` (git-ignored). Every web version
   must be visually lossless at its display size. See "Media quality policy" in
   `docs/intake.md`.
-- **The repository is public.** Do not commit photos or video of identifiable
-  people (especially children) until Mueez confirms consent.
+- **Media consent:** on 2026-10-12 Mueez approved the photos and video for the public
+  website. `media/web/` (web versions) is committed; `media/originals/` stays local.
 - Nothing is published or deployed without Mueez's explicit go-ahead.
 - Creative direction "The Minbar Wall" was approved on 2026-10-12 and the site is built
   (`index.html`, `assets/`). The logo is shown on black, as Mueez asked.
-- Media lives in `media/` (git-ignored). Rebuild the web versions with
-  `tools/make-web-media.sh`. Never add AI upscaling or retouching.
+- Rebuild `media/web/` with `tools/make-web-media.sh`. Never add AI upscaling or retouching.
+- The logo stays on black, as supplied (Mueez confirmed, 2026-10-12).

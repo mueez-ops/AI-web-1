@@ -1,7 +1,7 @@
 #!/bin/bash
 # Builds the web versions of the photos and video from the untouched masters.
 #   Masters: media/originals/   →   Web versions: media/web/
-# Both folders are git-ignored (the repo is public; the media shows people).
+# media/originals/ stays local; media/web/ is committed and served by the site.
 # Needs: ffmpeg with libx264, libx265, libsvtav1, zscale; python3 with Pillow.
 # Quality targets (measured 2026-10-12, SSIM vs the original):
 #   4K HEVC  = original stream, copied without re-encoding (identical)
