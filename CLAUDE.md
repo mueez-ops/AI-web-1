@@ -11,7 +11,11 @@ inventory and the proposed direction. `TODO.md` lists the open questions.
 - Ali Ibn-e-Abitalib Islamic Institution (AIAT). A Shia Islamic religious institute.
 - Founded 1992. The Quetta institute has served the community since 2018.
   Quetta, Balochistan, Pakistan.
-- Head / founder: Muhammad Kazim Behjati (title and spelling to confirm).
+- Head / founder: Muhammad Kazim Behjati. He is the speaker on the minbar in the photos and videos.
+- Location: Hazara Town, Quetta (shown on the institute's logo). Street address and map pin not yet supplied.
+- WhatsApp: +92 315 8455594 (the main contact; confirmed by Mueez).
+- The supplied photo and videos are from AIAT's own Muharram nights.
+- The site is in English only.
 - Teaches Qur'an, Tajweed, Ahkam and Hawza. Some classes are online, including for
   students abroad. Classes are the institute's only source of income.
 - Yearly programs: Muharram (first ten nights, the head speaks each night,
@@ -28,4 +32,7 @@ inventory and the proposed direction. `TODO.md` lists the open questions.
 - **The repository is public.** Do not commit photos or video of identifiable
   people (especially children) until Mueez confirms consent.
 - Nothing is published or deployed without Mueez's explicit go-ahead.
-- Creative direction must be approved (Gate 2) before the site is built.
+- Creative direction "The Minbar Wall" was approved on 2026-10-12 and the site is built
+  (`index.html`, `assets/`). The logo is shown on black, as Mueez asked.
+- Media lives in `media/` (git-ignored). Rebuild the web versions with
+  `tools/make-web-media.sh`. Never add AI upscaling or retouching.

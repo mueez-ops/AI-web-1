@@ -3,7 +3,9 @@
 Prepared 2026-10-12, after Mueez asked to start again from scratch with no past ideas.
 All earlier design, strategy and code were removed (still in git history, commit 56f352c, not reused).
 
-**Status:**
+**Status (updated 2026-10-12): approved by Mueez and built.** See §12 for his answers.
+
+**Status at the time of the proposal:**
 - Gate 1 (facts and assets): open. Contact details, class details and media consent are missing.
 - Gate 2 (creative direction): proposed below, awaiting approval.
 - Nothing is built or deployed.
@@ -201,3 +203,42 @@ The build can start on approval, with clearly marked placeholders where facts ar
 Mueez replies with:
 1. **"Approved"**, or changes to §6–8.
 2. **Answers** to the ★ items in `TODO.md`, at minimum the consent choice and a WhatsApp number or other contact.
+
+
+## 12. Owner answers (2026-10-12) and what was built
+
+**Mueez's answers**
+- Fresh start confirmed. The business summary is correct.
+- **The media:**
+  - The photos and videos are from AIAT. The scenes are at night.
+  - The speaker is **Muhammad Kazim Behjati**.
+  - The site is in **English** only.
+  - "Don't publish them, it is just a video of an event." This is being confirmed. Meanwhile the media is kept out of the public repo, and nothing is deployed.
+- **IMG_3186:** approved as the hero. The elevated photo is approved for the signature section. IMG_3165 and IMG_3162 are not used.
+- **Logo:** supplied as `logo.jpg` (now `assets/brand/logo-original.jpg`), to be shown on black.
+  - The cut-out keeps the original colours and every mark of the Urdu text. Nothing was recoloured or redrawn.
+  - The logo's text adds a fact: **Hazara Town, Quetta**.
+- **Contact:** WhatsApp **+92 315 8455594**.
+- **Empty image places** are left for a class photo and the building photo (not found in the repo).
+- §6–11 are approved.
+
+**Built**
+- `index.html` follows §7 exactly: hero video, facts, classes, "From the crowd to the minbar", the year, winter camp, visit and ask.
+- **Ask form:** there is no form service yet, so the form validates and then opens WhatsApp with the message written out. Nothing is stored, and no spam protection is needed because no server receives anything.
+- **Hero layout:**
+  - Desktop: the title sits low, in two columns, so the speaker is never covered.
+  - Phones: a square frame on the minbar with the text below it.
+- **Media:** prepared as in §5, measured, and rebuilt by `tools/make-web-media.sh`.
+
+**Verified in Chromium**
+- **Widths:** 375 / 768 / 1440 px plus reduced motion. No console errors and no horizontal overflow.
+- **Video loading:**
+  - With reduced motion, the hero loads no video.
+  - The loop crossfades continuously.
+  - If a version fails, the next one is tried; if none plays, the poster stays.
+- **Scroll zoom:** desktop only.
+- **Ask form:**
+  - an empty submit shows both errors and focuses the first;
+  - the subject links pre-fill the form;
+  - a sent message reaches wa.me/923158455594 with the right text.
+- **Phone menu:** opens and closes.

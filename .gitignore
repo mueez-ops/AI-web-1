@@ -1,7 +1,7 @@
-# Original photos and videos: kept at full quality, never committed.
-# The repository is public and the media shows identifiable people,
-# including children, so it stays out of git until consent is confirmed.
-media/originals/
+# Photos and videos (originals and web versions) are never committed:
+# the repository is public and the media shows identifiable people.
+# Rebuild web versions with tools/make-web-media.sh.
+media/
 # OS / editor
 .DS_Store
 Thumbs.db
